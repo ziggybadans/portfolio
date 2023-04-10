@@ -10,17 +10,17 @@
     height: 300px;
     object-fit: cover;
   }
-  .griditembig {
+  #big {
     width: 100%;
     height: 300px;
     object-fit: cover;
   }
-  .griditemlandscape {
+  #landscape {
     width: 100%;
     height: 300px;
     object-fit: cover;
   }
-  .griditemportrait {
+  #portrait {
     width: 100%;
     height: 300px;
     object-fit: cover;
@@ -36,15 +36,15 @@
       height: 210px;
       object-fit: cover;
     }
-    .griditembig {
+    #big {
       height: 210px;
       object-fit: cover;
     }
-    .griditemlandscape {
+    #landscape {
       height: 210px;
       object-fit: cover;
     }
-    .griditemportrait {
+    #portrait {
       height: 210px;
       object-fit: cover;
     }
@@ -61,23 +61,24 @@
       width: 100%;
       height: 210px;
     }
-    .griditembig {
+    #big {
       width: 100%;
       height: 435px;
       grid-column: span 2;
       grid-row: span 2;
       object-fit: cover;
     }
-    .griditemportrait {
+    #portrait {
       width: 100%;
       height: 435px;
       grid-row: span 2;
       object-fit: cover;
     }
-    .griditemlandscape {
+    #landscape {
       width: 100%;
       height: 210px;
       grid-column: span 2;
       object-fit: cover;
     }
   }
+
