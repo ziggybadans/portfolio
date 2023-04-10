@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { m, motion } from 'framer-motion';
 
-const Lightbox = ({children, src, alt, onClick}) => {
+const Lightbox = ({children, style, src, alt, onClick}) => {
     const [ isOpen, setIsOpen ] = useState(false);
     const [ isOpenSmall, setIsOpenSmall ] = useState(false);
 
@@ -35,12 +35,13 @@ const Lightbox = ({children, src, alt, onClick}) => {
     };
 
     return (
-        <motion.div Layout id="agent-div" className="lightbox-agent" onClick={toggleIsOpen} style={{zIndex: '100'}}
+        <motion.div Layout id="agent-div" className={style} onClick={toggleIsOpen}
             animate={{
                 scale: isOpen ? 4.5 : 1,
                 x: isOpen ? "160%" : "0%",
                 y: isOpen ? "50%" : "0%",
                 boxShadow: "0px 0px 8px rgba(0,0,0,0.3)",
+                zIndex: isOpen ? "10" : "0"
             }}>
             {children}
             {isOpen &&
@@ -53,7 +54,7 @@ const Lightbox = ({children, src, alt, onClick}) => {
                     width: '100vw',
                     background: 'rgba(255,255,255,0.5)',
                     cursor: 'pointer',
-                    zIndex: '-2'
+                    zIndex: '1'
                 }}
                 animate={{
                     x: isOpen ? -100 : 0,
