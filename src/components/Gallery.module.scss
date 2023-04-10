@@ -10,6 +10,21 @@
     height: 300px;
     object-fit: cover;
   }
+  .griditembig {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+  .griditemlandscape {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+  .griditemportrait {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
 
 @media only screen and (min-width: 600px) {
     .gallery {
@@ -19,6 +34,19 @@
     }
     .griditem {
       height: 210px;
+      object-fit: cover;
+    }
+    .griditembig {
+      height: 210px;
+      object-fit: cover;
+    }
+    .griditemlandscape {
+      height: 210px;
+      object-fit: cover;
+    }
+    .griditemportrait {
+      height: 210px;
+      object-fit: cover;
     }
   }
 
