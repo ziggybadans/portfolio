@@ -66,9 +66,19 @@
       "size": "normal"
     },
     {
+      "text": "Image61",
+      "link": "images/image61.jpg",
+      "size": "portrait"
+    },
+    {
       "text": "Image13",
       "link": "images/image13.jpg",
       "size": "normal"
+    },
+    {
+      "text": "Image26",
+      "link": "images/image26.jpg",
+      "size": "big"
     },
     {
       "text": "Image14",
@@ -131,11 +141,6 @@
       "size": "normal"
     },
     {
-      "text": "Image26",
-      "link": "images/image26.jpg",
-      "size": "big"
-    },
-    {
       "text": "Image3",
       "link": "images/image3.jpg",
       "size": "normal"
@@ -146,14 +151,14 @@
       "size": "normal"
     },
     {
-      "text": "Image29",
-      "link": "images/image29.jpg",
-      "size": "normal"
-    },
-    {
       "text": "Image30",
       "link": "images/image30.jpg",
       "size": "big"
+    },
+    {
+      "text": "Image29",
+      "link": "images/image29.jpg",
+      "size": "normal"
     },
     {
       "text": "Image31",
@@ -161,13 +166,13 @@
       "size": "normal"
     },
     {
-      "text": "Image32",
-      "link": "images/image32.jpg",
-      "size": "normal"
-    },
-    {
       "text": "Image33",
       "link": "images/image33.jpg",
+      "size": "big"
+    },
+    {
+      "text": "Image32",
+      "link": "images/image32.jpg",
       "size": "normal"
     },
     {
@@ -218,17 +223,17 @@
     {
       "text": "Image43",
       "link": "images/image43.jpg",
-      "size": "normal"
+      "size": "landscape"
     },
     {
       "text": "Image44",
       "link": "images/image44.jpg",
-      "size": "big"
+      "size": "landscape"
     },
     {
       "text": "Image45",
       "link": "images/image45.jpg",
-      "size": "normal"
+      "size": "big"
     },
     {
       "text": "Image46",
@@ -270,10 +275,14 @@
       "link": "images/image53.jpg",
       "size": "normal"
     },
-
     {
       "text": "Image55",
       "link": "images/image55.jpg",
+      "size": "portrait"
+    },
+    {
+      "text": "Image59",
+      "link": "images/image59.jpg",
       "size": "portrait"
     },
     {
@@ -284,23 +293,12 @@
     {
       "text": "Image60",
       "link": "images/image60.jpg",
-      "size": "portrait"
+      "size": "landscape"
     },
     {
       "text": "Image58",
       "link": "images/image58.jpg",
       "size": "landscape"
-    },
-    {
-      "text": "Image59",
-      "link": "images/image59.jpg",
-      "size": "portrait"
-    },
-
-    {
-      "text": "Image61",
-      "link": "images/image61.jpg",
-      "size": "normal"
     }
   ]
 }
