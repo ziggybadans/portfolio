@@ -18,5 +18,33 @@ a {
 
 img {
   transition: 1s;
+}
+
+@media (prefers-color-scheme: light) {
+  main {
+    background-color: rgb(243, 244, 246);
+  }
   
+  .buttonbg {
+    background-color: white;
+  }
+
+  .buttonbg:hover {
+    background-color: rgb(229, 231, 235);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark main {
+    background-color: #131418;
+    color: aliceblue;
+  }
+  
+  .dark .buttonbg {
+    background-color: rgb(15, 15, 15);
+  }
+  
+  .dark .buttonbg:hover {
+    background-color: black;
+  }
 }

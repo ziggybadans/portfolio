@@ -2,12 +2,14 @@ import * as React from "react";
 import Head from 'next/head';
 import Gallery from "../components/Gallery"
 import { motion } from "framer-motion"
+import { useState } from "react";
+import DarkModeButton from "../components/DarkModeButton"
 
 const handleClick = (id) => {
   document.querySelector(id).scrollIntoView({behavior: 'smooth'})
 };
 
-export default function Home() {
+export default function Home({ darkMode, setDarkMode }) {
   return (
     <div>
       <Head>
@@ -17,19 +19,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main id="home" className="justify-center min-h-screen bg-gray-100">
+      <main id="home" className="justify-center min-h-screen">
       <div className="flex flex-col items-center justify-center min-h-screen">
         <h1 className="text-5xl font-bold mb-4">Ziggy Badans</h1>
         <p className="text-lg mb-8">Photography & Cinematography</p>
         <div className="grid grid-cols-2 gap-4">
           <button onClick={() => handleClick('#photography')}>
-            <div className="bg-white p-4 rounded-lg shadow-md hover:bg-gray-200">
+            <div className="buttonbg bg-white p-4 rounded-lg shadow-md hover:bg-gray-200">
               <h2 className="text-xl font-semibold mb-2">Photography</h2>
               <p>View my photography work.</p>
             </div>
           </button>
           <button onClick={() => handleClick('#cinematography')}>
-            <div className="bg-white p-4 rounded-lg shadow-md hover:bg-gray-200">
+            <div className="buttonbg bg-white p-4 rounded-lg shadow-md hover:bg-gray-200">
               <h2 className="text-xl font-semibold mb-2">Cinematography</h2>
               <p>View my cinematography work.</p>
             </div>
@@ -47,6 +49,8 @@ export default function Home() {
       <h1 className="text-4xl font-bold mt-12 mb-3">Cinematography</h1>
         <button onClick={() => handleClick('#home')} className="font-bold text-gray-600">Back</button>
       </div>
+
+      <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode}/>
     </main>
     </div>
   );
