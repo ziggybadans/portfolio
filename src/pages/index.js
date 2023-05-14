@@ -1,8 +1,7 @@
 import * as React from "react";
 import Head from 'next/head';
 import Gallery from "../components/Gallery"
-import { motion } from "framer-motion"
-import { useState } from "react";
+import GalleryVideo from "../components/GalleryVideo"
 import DarkModeButton from "../components/DarkModeButton"
 
 const handleClick = (id) => {
@@ -19,7 +18,7 @@ export default function Home({ darkMode, setDarkMode }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main id="home" className="justify-center min-h-screen">
+      <main id="home" className="justify-center min-h-screen relative">
       <div className="flex flex-col items-center justify-center min-h-screen">
         <h1 className="text-5xl font-bold mb-4">Ziggy Badans</h1>
         <p className="text-lg mb-8">Photography & Cinematography</p>
@@ -37,20 +36,22 @@ export default function Home({ darkMode, setDarkMode }) {
             </div>
           </button>
         </div>
+        <p className="absolute mt-72 text-gray-500">This is just a beta website while I set up a proper navigation.</p>
       </div>
 
       <div id="photography" className="photography flex flex-col items-center min-h-screen">
         <h1 className="text-6xl font-bold mt-12 mb-8">Photography</h1>
-        <button onClick={() => handleClick('#home')} className="font-bold text-gray-600 mb-10">Back</button>
+        <button onClick={() => handleClick('#home')} className="font-bold text-gray-600 mb-14">Back</button>
         <Gallery></Gallery>
       </div>
 
-      <div id="cinematography" className="min-h-screen">
-      <h1 className="text-4xl font-bold mt-12 mb-3">Cinematography</h1>
-        <button onClick={() => handleClick('#home')} className="font-bold text-gray-600">Back</button>
+      <div id="cinematography" className="cinematography flex flex-col items-center min-h-screen pb-16">
+        <h1 className="text-6xl font-bold mt-44 mb-8">Cinematography</h1>
+        <button onClick={() => handleClick('#home')} className="font-bold text-gray-600 mb-14">Back</button>
+        <GalleryVideo></GalleryVideo>
       </div>
 
-      <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode}/>
+      <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode} className="-z-10"/>
     </main>
     </div>
   );
