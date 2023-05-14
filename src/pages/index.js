@@ -36,7 +36,7 @@ export default function Home({ darkMode, setDarkMode }) {
             </div>
           </button>
         </div>
-        <p className="absolute mt-72 text-gray-500">This is just a beta website while I set up a proper navigation.</p>
+        <p className="text-center mt-6 text-gray-500">This is just a beta website while I set up a proper navigation.</p>
       </div>
 
       <div id="photography" className="photography flex flex-col items-center min-h-screen">
