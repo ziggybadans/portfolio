@@ -1,5 +1,5 @@
 import styles from "../components/Gallery.module.scss";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from 'framer-motion';
 import data from "../data/images.json"
 import Lightbox from "./Lightbox";
@@ -8,36 +8,38 @@ function Gallery() {
 
     const [ openImg, setOpenImg ] = useState(null);
     const [ currentIndex, setCurrentIndex ] = useState(null);
-    var scrollingEnabled;
 
-    const handleClick = (item, index) => {
+    const [ screenSize, setScreenSize ] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+    const scrollingEnabled = useRef(true);
+
+    const handleClick = useCallback((item, index) => {
         setCurrentIndex(index);
         setOpenImg(item.link);
-        if (screenSize > 1000) {disableScrolling()} else {enableScrolling()};
-    };
+        if(screenSize > 1000) {
+            disableScrolling();
+        } else {
+            enableScrolling();
+        }
+    }, [screenSize]);
 
     const handleRotationRight = () => {
         const totalLength = data.data.length;
-        if(currentIndex + 1 >= totalLength) {
-            setCurrentIndex(0);
-            const newUrl = data.data[0].link;
-            setOpenImg(newUrl);
-            return;
+        let newIndex = currentIndex + 1;
+        if(newIndex >= totalLength) {
+            newIndex = 0;
         }
-        else {
-            const newIndex = currentIndex + 1;
-            const newUrl = data.data.filter((item) => {
-                return data.data.indexOf(item) === newIndex;
-            });
-            const newItem = newUrl[0].link;
-            setOpenImg(newItem);
-            setCurrentIndex(newIndex);
-        }
+        const newItem = data.data[newIndex].link;
+        setOpenImg(newItem);
+        setCurrentIndex(newIndex);
     }
 
-    if (typeof window !== "undefined") {
-        var screenSize = window.innerWidth;
-      }
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenSize(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     function disableScrolling() {
         var x = window.scrollX;
@@ -45,12 +47,12 @@ function Gallery() {
         window.onscroll = function() {
             window.scrollTo(x, y);
         };
-        scrollingEnabled = false;
+        scrollingEnabled.current = false;
     }
 
     function enableScrolling() {
         window.onscroll = function () {}
-        scrollingEnabled = true;
+        scrollingEnabled.current = true;
     }
 
     return (

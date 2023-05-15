@@ -3,28 +3,23 @@ import { m, motion } from 'framer-motion';
 import data from "../data/videos.json"
 import React, { useState } from "react";
 
-const Lightbox = ({ openImg, handleRotationRight, setOpenImg }) => {
+const LightboxVideo = ({ openImg, handleRotationRight, setOpenImg }) => {
 
     const [ zoom, enableZoom ] = useState(false);
+    const [ screenSize, setScreenSize ] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
 
     const handleClick = (e) => {
-        if(e.target.classList.contains("dismiss")) {
-            setOpenImg(null);
-            enableScrolling();
-        } else {
-            if (screenSize > 500) { enableZoom(!zoom) }
-            console.log(zoom);
-        }
+        if (screenSize > 500) { enableZoom(!zoom) }
     };
+
+    const handleClose = () => {
+        setOpenImg(null);
+        enableScrolling();
+    }
 
     function enableScrolling() {
         window.onscroll = function () {}
     }
-
-    if (typeof window !== "undefined") {
-        var screenSize = window.innerWidth;
-        console.log(screenSize);
-      }
 
     const {link, height, width} = openImg;
 
@@ -33,9 +28,9 @@ const Lightbox = ({ openImg, handleRotationRight, setOpenImg }) => {
             <iframe width={width} height={height} src={link} title="YouTube Video Player"
                 allow="acclerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen />
-            <span className="dismiss" onClick={handleClick} style={{cursor:"pointer"}}>X</span>
+            <span className="dismiss" onClick={handleClose} style={{cursor:"pointer"}}>X</span>
         </motion.div>
     );
 };
 
-export default Lightbox;
+export default LightboxVideo;

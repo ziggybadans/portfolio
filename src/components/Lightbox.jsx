@@ -5,33 +5,28 @@ import React, { useState } from "react";
 const Lightbox = ({ openImg, handleRotationRight, setOpenImg }) => {
 
     const [ zoom, enableZoom ] = useState(false);
+    const [ screenSize, setScreenSize ] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
 
     const handleClick = (e) => {
-        if(e.target.classList.contains("dismiss")) {
-            setOpenImg(null);
-            enableScrolling();
-        } else {
-            if (screenSize > 500) { enableZoom(!zoom) }
-            console.log(zoom);
-        }
+        if (screenSize > 500) { enableZoom(!zoom) }
     };
+
+    const handleClose = () => {
+        setOpenImg(null);
+        enableScrolling();
+    }
 
     function enableScrolling() {
         window.onscroll = function () {}
     }
 
-    if (typeof window !== "undefined") {
-        var screenSize = window.innerWidth;
-        console.log(screenSize);
-      }
-
     return (
         <motion.div className={styles.overlay} onClick={handleClick}>
             <motion.img src={openImg}
                 animate={{ scale: zoom ? 2 : 1 }}
-                transition={{ ease: "easeOut", duration: 0.0005}}
+                transition={{ ease: "easeOut", duration: 0.00005}}
                 style={{ cursor: zoom ? "zoom-out" : "zoom-in" }}/>
-            <span className="dismiss" onClick={handleClick} style={{cursor:"pointer"}}>X</span>
+            <span className="dismiss" onClick={handleClose} style={{cursor:"pointer"}}>X</span>
         </motion.div>
     );
 };

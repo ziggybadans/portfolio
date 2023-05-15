@@ -3,10 +3,22 @@ import Head from 'next/head';
 import Gallery from "../components/Gallery"
 import GalleryVideo from "../components/GalleryVideo"
 import DarkModeButton from "../components/DarkModeButton"
+import { useRef } from "react";
 
-const handleClick = (id) => {
-  document.querySelector(id).scrollIntoView({behavior: 'smooth'})
-};
+const ScrollButton = ({ target, heading, children }) => {
+  const handleClick = () => {
+    document.querySelector(target).scrollIntoView({ behavior: 'smooth'})
+  };
+
+  return (
+    <button onClick={handleClick}>
+      <div className="buttonbg bg-white p-4 rounded-lg shadow-md hover:bg-gray-200">
+        <h2 className="text-xl font-semibold mb-2">{heading}</h2>
+        <p>{children}</p>
+      </div>
+    </button>
+  );
+}
 
 export default function Home({ darkMode, setDarkMode }) {
   return (
@@ -23,18 +35,12 @@ export default function Home({ darkMode, setDarkMode }) {
         <h1 className="text-5xl font-bold mb-4">Ziggy Badans</h1>
         <p className="text-lg mb-8">Photography & Cinematography</p>
         <div className="grid grid-cols-2 gap-4">
-          <button onClick={() => handleClick('#photography')}>
-            <div className="buttonbg bg-white p-4 rounded-lg shadow-md hover:bg-gray-200">
-              <h2 className="text-xl font-semibold mb-2">Photography</h2>
-              <p>View my photography work.</p>
-            </div>
-          </button>
-          <button onClick={() => handleClick('#cinematography')}>
-            <div className="buttonbg bg-white p-4 rounded-lg shadow-md hover:bg-gray-200">
-              <h2 className="text-xl font-semibold mb-2">Cinematography</h2>
-              <p>View my cinematography work.</p>
-            </div>
-          </button>
+          <ScrollButton target="#photography" heading="Photography">
+            View my photography work.
+          </ScrollButton>
+          <ScrollButton target="#cinematography" heading="Cinematography">
+            View my cinematography work.
+          </ScrollButton>
         </div>
         <p className="text-center mt-6 text-gray-500">This is just a beta website while I set up a proper navigation.</p>
       </div>

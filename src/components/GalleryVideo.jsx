@@ -1,22 +1,28 @@
 import styles from "../components/GalleryVideo.module.scss";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from 'framer-motion';
 import data from "../data/videos.json"
 import Lightbox from "./LightboxVideo";
 
-function Gallery() {
+function GalleryVideo() {
 
     const sortedVideos = data.data.sort((a, b) => b.date.localeCompare(a.date))
 
     const [ openImg, setOpenImg ] = useState(null);
     const [ currentIndex, setCurrentIndex ] = useState(null);
-    var scrollingEnabled;
 
-    const handleClick = (item, index) => {
+    const [ screenSize, setScreenSize ] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+    const scrollingEnabled = useRef(true);
+
+    const handleClick = useCallback((item, index) => {
         setCurrentIndex(index);
         setOpenImg(item);
-        if (screenSize > 1000) {disableScrolling()} else {enableScrolling()};
-    };
+        if(screenSize > 1000) {
+            disableScrolling();
+        } else {
+            enableScrolling();
+        }
+    }, [screenSize]);
 
     const handleRotationRight = () => {
         const totalLength = data.data.length;
@@ -35,9 +41,15 @@ function Gallery() {
         }
     }
 
-    if (typeof window !== "undefined") {
-        var screenSize = window.innerWidth;
-      }
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenSize(window.innerWidth);
+        };
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
+    }, []);
 
     function disableScrolling() {
         var x = window.scrollX;
@@ -45,12 +57,12 @@ function Gallery() {
         window.onscroll = function() {
             window.scrollTo(x, y);
         };
-        scrollingEnabled = false;
+        scrollingEnabled.current = false;
     }
 
     function enableScrolling() {
         window.onscroll = function () {}
-        scrollingEnabled = true;
+        scrollingEnabled.current = true;
     }
 
     function formatDate(dateStr) {
@@ -67,7 +79,6 @@ function Gallery() {
         }
         return dateStr;
     }
-    
 
     return (
         <div>
@@ -90,4 +101,4 @@ function Gallery() {
     );
 }
 
-export default Gallery;
+export default GalleryVideo;

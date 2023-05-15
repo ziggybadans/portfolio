@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react"
+import PropTypes from 'prop-types';
 
 export default function DarkModeButton({ darkMode, setDarkMode, onDarkModeReady }) {
+    useEffect(() => {
+        // Check for dark mode in local storage on component mount
+        const storedDarkMode = JSON.parse(localStorage.getItem('dark'));
+        if (storedDarkMode !== null) {
+            setDarkMode(storedDarkMode);
+        }
+    }, [])
+
     useEffect(() => {
         // Call the onDarkModeReady function passed as a prop
         if (typeof onDarkModeReady === 'function') {
             onDarkModeReady();
         }
-    }, [])
+    }, [darkMode]); // Include darkMode in dependency array if onDarkModeReady should be called whenever darkMode changes
 
     const handleClick = () => {
         const newDarkMode = !darkMode
@@ -16,7 +25,7 @@ export default function DarkModeButton({ darkMode, setDarkMode, onDarkModeReady 
         localStorage.setItem('dark', JSON.stringify(newDarkMode))
 
         // Add "dark" class to main element when dark mode is enabled
-        if (newDarkMode) {
+           if (newDarkMode) {
             document.documentElement.classList.add('dark')
         } else {
             document.documentElement.classList.remove('dark')
@@ -42,3 +51,9 @@ export default function DarkModeButton({ darkMode, setDarkMode, onDarkModeReady 
         </button>
     )
 }
+
+DarkModeButton.propTypes = {
+    darkMode: PropTypes.bool.isRequired,
+    setDarkMode: PropTypes.func.isRequired,
+    onDarkModeReady: PropTypes.func
+};
