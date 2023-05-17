@@ -4,6 +4,7 @@ import Gallery from "../components/Gallery"
 import GalleryVideo from "../components/GalleryVideo"
 import DarkModeButton from "../components/DarkModeButton"
 import LandingPage from "@/components/LandingPage";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 export default function Home({ darkMode, setDarkMode }) {
   return (
@@ -31,7 +32,8 @@ export default function Home({ darkMode, setDarkMode }) {
           <GalleryVideo></GalleryVideo>
         </div>
 
-        <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode} className="-z-10" />
+        <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode}/>
+        <ScrollToTopButton darkMode={darkMode}/>
       </main>
     </div>
   );
