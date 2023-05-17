@@ -3,22 +3,7 @@ import Head from 'next/head';
 import Gallery from "../components/Gallery"
 import GalleryVideo from "../components/GalleryVideo"
 import DarkModeButton from "../components/DarkModeButton"
-import { useRef } from "react";
-
-const ScrollButton = ({ target, heading, children }) => {
-  const handleClick = () => {
-    document.querySelector(target).scrollIntoView({ behavior: 'smooth'})
-  };
-
-  return (
-    <button onClick={handleClick}>
-      <div className="buttonbg bg-white p-4 rounded-lg shadow-md hover:bg-gray-200">
-        <h2 className="text-xl font-semibold mb-2">{heading}</h2>
-        <p>{children}</p>
-      </div>
-    </button>
-  );
-}
+import LandingPage from "@/components/LandingPage";
 
 export default function Home({ darkMode, setDarkMode }) {
   return (
@@ -30,35 +15,24 @@ export default function Home({ darkMode, setDarkMode }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main id="home" className="justify-center min-h-screen relative">
-      <div className="flex flex-col items-center justify-center min-h-screen">
-        <h1 className="text-5xl font-bold mb-4">Ziggy Badans</h1>
-        <p className="text-lg mb-8">Photography & Cinematography</p>
-        <div className="grid grid-cols-2 gap-4">
-          <ScrollButton target="#photography" heading="Photography">
-            View my photography work.
-          </ScrollButton>
-          <ScrollButton target="#cinematography" heading="Cinematography">
-            View my cinematography work.
-          </ScrollButton>
+      <main className="justify-center min-h-screen relative">
+
+        <LandingPage />
+
+        <div id="photography" className="photography flex flex-col items-center min-h-screen">
+          <h1 className="text-6xl font-bold mt-12 mb-8">Photography</h1>
+          <button onClick={() => handleClick('#home')} className="font-bold text-gray-600 mb-14">Back</button>
+          <Gallery></Gallery>
         </div>
-        <p className="text-center mt-6 text-gray-500">This is just a beta website while I set up a proper navigation.</p>
-      </div>
 
-      <div id="photography" className="photography flex flex-col items-center min-h-screen">
-        <h1 className="text-6xl font-bold mt-12 mb-8">Photography</h1>
-        <button onClick={() => handleClick('#home')} className="font-bold text-gray-600 mb-14">Back</button>
-        <Gallery></Gallery>
-      </div>
+        <div id="cinematography" className="cinematography flex flex-col items-center min-h-screen pb-16">
+          <h1 className="text-6xl font-bold mt-44 mb-8">Cinematography</h1>
+          <button onClick={() => handleClick('#home')} className="font-bold text-gray-600 mb-14">Back</button>
+          <GalleryVideo></GalleryVideo>
+        </div>
 
-      <div id="cinematography" className="cinematography flex flex-col items-center min-h-screen pb-16">
-        <h1 className="text-6xl font-bold mt-44 mb-8">Cinematography</h1>
-        <button onClick={() => handleClick('#home')} className="font-bold text-gray-600 mb-14">Back</button>
-        <GalleryVideo></GalleryVideo>
-      </div>
-
-      <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode} className="-z-10"/>
-    </main>
+        <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode} className="-z-10" />
+      </main>
     </div>
   );
 }
