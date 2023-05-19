@@ -1,22 +1,6 @@
-import { useEffect, useState } from "react"
 import PropTypes from 'prop-types';
 
-export default function DarkModeButton({ darkMode, setDarkMode, onDarkModeReady }) {
-    useEffect(() => {
-        // Check for dark mode in local storage on component mount
-        const storedDarkMode = JSON.parse(localStorage.getItem('dark'));
-        if (storedDarkMode !== null) {
-            setDarkMode(storedDarkMode);
-        }
-    }, [])
-
-    useEffect(() => {
-        // Call the onDarkModeReady function passed as a prop
-        if (typeof onDarkModeReady === 'function') {
-            onDarkModeReady();
-        }
-    }, [darkMode]); // Include darkMode in dependency array if onDarkModeReady should be called whenever darkMode changes
-
+export default function DarkModeButton({ darkMode, setDarkMode }) {
     const handleClick = () => {
         const newDarkMode = !darkMode
         setDarkMode(newDarkMode)

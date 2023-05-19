@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
-
   const [ darkMode, setDarkMode ] = useState(false)
 
   useEffect(() => {
