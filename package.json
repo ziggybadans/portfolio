@@ -11,6 +11,7 @@
   "dependencies": {
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
+    "firebase": "^9.22.0",
     "framer-motion": "^10.6.0",
     "jquery": "^3.6.4",
     "masonry-layout": "^4.2.2",

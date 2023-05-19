@@ -1,12 +1,35 @@
 import * as React from "react";
+import { useContext } from "react";
 import Head from 'next/head';
+import Link from 'next/link';
+
 import Gallery from "../components/Gallery"
 import GalleryVideo from "../components/GalleryVideo"
 import DarkModeButton from "../components/DarkModeButton"
-import LandingPage from "@/components/LandingPage";
-import ScrollToTopButton from "@/components/ScrollToTopButton";
+import LandingPage from "../components/LandingPage";
+import ScrollToTopButton from "../components/ScrollToTopButton";
+
+import imagesJSON from "../data/images.json"
+
+import { UserContext } from "../../hooks/UserContext.Provider";
+import { auth } from '../../firebaseClient.js'
+import { signOut } from "firebase/auth"
 
 export default function Home({ darkMode, setDarkMode }) {
+  const user = useContext(UserContext);
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error signing out", error);
+    }
+  };
+
+  const handleClick = () => {
+    document.querySelector(target).scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div>
       <Head>
@@ -16,14 +39,13 @@ export default function Home({ darkMode, setDarkMode }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="justify-center min-h-screen relative">
-
+      <main>
         <LandingPage />
 
         <div id="photography" className="photography flex flex-col items-center min-h-screen">
           <h1 className="text-6xl font-bold mt-12 mb-8">Photography</h1>
           <button onClick={() => handleClick('#home')} className="font-bold text-gray-600 mb-14">Back</button>
-          <Gallery></Gallery>
+          <Gallery jsonFile="/api/images.json"/>
         </div>
 
         <div id="cinematography" className="cinematography flex flex-col items-center min-h-screen pb-16">
@@ -31,10 +53,21 @@ export default function Home({ darkMode, setDarkMode }) {
           <button onClick={() => handleClick('#home')} className="font-bold text-gray-600 mb-14">Back</button>
           <GalleryVideo></GalleryVideo>
         </div>
-
-        <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode}/>
-        <ScrollToTopButton darkMode={darkMode}/>
       </main>
+
+      <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode}/>
+        <ScrollToTopButton darkMode={darkMode}/>
+        <Link href={user ? "" : "/signinform"}>
+          <button className="fixed top-0 right-0 m-4 text-lg">
+            {user ? `Welcome, ${user.email}` : 'Sign In'}
+          </button>
+        </Link>
+        <button 
+          className={`fixed top-7 right-0 m-4 font-bold text-gray-500 
+          ${user ? "" : "invisible"}`} 
+          onClick={handleSignOut}>
+            Sign Out
+          </button>
     </div>
   );
 }

@@ -20,8 +20,15 @@ img {
   transition: 1s;
 }
 
+.background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
 @media (prefers-color-scheme: light) {
-  main {
+  .background {
     background-color: rgb(243, 244, 246);
   }
   
@@ -35,7 +42,7 @@ img {
 }
 
 @media (prefers-color-scheme: dark) {
-  .dark main {
+  .dark .background {
     background-color: #131418;
     color: aliceblue;
   }

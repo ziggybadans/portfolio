@@ -1,10 +1,14 @@
-import '@/styles/globals.css'
+import '@/styles/globals.scss'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { auth } from '../../firebaseClient.js'
+import { UserContext } from '../../hooks/UserContext.Provider.jsx'
 
 export default function App({ Component, pageProps }) {
-  const router = useRouter()
-  const [ darkMode, setDarkMode ] = useState(false)
+  const router = useRouter();
+
+  // Dark Mode
+  const [ darkMode, setDarkMode ] = useState(false);
 
   useEffect(() => {
     initialiseDarkMode();
@@ -36,9 +40,20 @@ export default function App({ Component, pageProps }) {
     initialiseDarkMode();
   }
 
+  // Authentication
+  const [ user, setUser ] = useState(null);
+
+  useEffect(() => {
+    return auth.onAuthStateChanged(currentUser => {
+      setUser(currentUser);
+    });
+  }, []);
+
   return (
-    <>
-      <Component {...pageProps} darkMode={darkMode} setDarkMode={setDarkMode} onDarkModeReady={onDarkModeReady}/>
-    </>
+    <div className="background">
+      <UserContext.Provider value={user}>
+        <Component {...pageProps} darkMode={darkMode} setDarkMode={setDarkMode} onDarkModeReady={onDarkModeReady}/>
+      </UserContext.Provider>
+    </div>
   )
 }

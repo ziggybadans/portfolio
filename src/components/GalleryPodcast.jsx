@@ -1,4 +1,4 @@
-import styles from "../styles/modules/Gallery.module.scss";
+import styles from "../styles/modules/GalleryPodcast.module.scss";
 import React, {
   useCallback,
   useEffect,
@@ -8,7 +8,7 @@ import React, {
 import { motion } from "framer-motion";
 import Lightbox from "./Lightbox";
 
-function Gallery({ jsonFile }) {
+function GalleryPodcast({ jsonFile }) {
   const [images, setImages] = useState([]);
   const [openImg, setOpenImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
@@ -29,47 +29,8 @@ function Gallery({ jsonFile }) {
     (item, index) => {
       setCurrentIndex(index);
       setOpenImg(item.link);
-      if (screenSize > 1000) {
-        disableScrolling();
-      } else {
-        enableScrolling();
-      }
-    },
-    [screenSize]
-  );
-
-  const handleRotationRight = () => {
-    const totalLength = images.length;
-    let newIndex = currentIndex + 1;
-    if (newIndex >= totalLength) {
-      newIndex = 0;
     }
-    const newItem = images[newIndex].link;
-    setOpenImg(newItem);
-    setCurrentIndex(newIndex);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenSize(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  function disableScrolling() {
-    var x = window.scrollX;
-    var y = window.scrollY;
-    window.onscroll = function () {
-      window.scrollTo(x, y);
-    };
-    scrollingEnabled.current = false;
-  }
-
-  function enableScrolling() {
-    window.onscroll = function () {};
-    scrollingEnabled.current = true;
-  }
+  );
 
   return (
     <div>
@@ -96,16 +57,9 @@ function Gallery({ jsonFile }) {
             />
           </motion.div>
         ))}
-        {openImg && (
-          <Lightbox
-            openImg={openImg}
-            handleRotationRight={handleRotationRight}
-            setOpenImg={setOpenImg}
-          />
-        )}
       </div>
     </div>
   );
 }
 
-export default Gallery;
+export default GalleryPodcast;

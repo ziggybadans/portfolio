@@ -1,0 +1,28 @@
+.form {
+    display: grid;
+    gap: 1em;
+    justify-content: space-between;
+}
+
+.form > label {
+    width: 200px;
+}
+
+.form > label > input {
+    margin-left: 1em;
+    margin-top: 0.25em;
+    background-color: rgba($color: #313131c3, $alpha: 1.0);
+    flex-grow: 1;
+    border: 2px solid;
+}
+
+@keyframes flash {
+    0%   {border-color: rgba($color: #313131c3, $alpha: 1.0);}
+    50%  {border-color: rgba($color: #a73838c3, $alpha: 1.0);}
+    100% {border-color: rgba($color: #313131c3, $alpha: 1.0);}
+}
+
+.flashAnimation {
+    animation-name: flash;
+    animation-duration: 0.5s;
+}

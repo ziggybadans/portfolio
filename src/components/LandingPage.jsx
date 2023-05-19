@@ -1,4 +1,7 @@
-import styles from "../styles/LandingPage.module.scss";
+import styles from "../styles/modules/LandingPage.module.scss";
+import { UserContext } from "../../hooks/UserContext.Provider";
+import { useContext } from "react";
+import Link from 'next/link';
 
 const ScrollButton = ({ target, heading, children }) => {
   const handleClick = () => {
@@ -16,6 +19,7 @@ const ScrollButton = ({ target, heading, children }) => {
 };
 
 export default function LandingPage() {
+  const user = useContext(UserContext);
   return (
     <div className={styles.home}>
       <h1 className="text-5xl font-bold mb-4">Ziggy Badans</h1>
@@ -28,6 +32,17 @@ export default function LandingPage() {
           View my cinematography work.
         </ScrollButton>
       </div>
+      <div className={`mt-4 ${user ? "" : "hidden"}`}>
+      <Link href="/podcast">
+        <button>
+          <div className="buttonbg bg-white p-4 rounded-lg shadow-md hover:bg-gray-200">
+            <h2 className="text-xl font-semibold mb-2">Podcast Members Area</h2>
+            <p>Area to submit ratings for graphic design.</p>
+          </div>
+        </button>
+      </Link>
+      </div>
+
       <p className="text-center mt-6 text-gray-500">
         This is just a beta website while I set up a proper navigation.
       </p>

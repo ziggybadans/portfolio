@@ -1,4 +1,4 @@
-import styles from "../styles/Lightbox.module.scss";
+import styles from "../styles/modules/Lightbox.module.scss";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 

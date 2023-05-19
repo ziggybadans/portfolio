@@ -1,4 +1,4 @@
-import styles from "../styles/GalleryVideo.module.scss";
+import styles from "../styles/modules/GalleryVideo.module.scss";
 import React, {
   useCallback,
   useEffect,

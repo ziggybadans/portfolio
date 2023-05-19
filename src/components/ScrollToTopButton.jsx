@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from '../styles/ScrollToTopButton.module.scss'
+import styles from '../styles/modules/ScrollToTopButton.module.scss'
 
 class ScrollToTopButton extends Component {
     constructor(props) {
