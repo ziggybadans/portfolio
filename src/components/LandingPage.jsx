@@ -43,7 +43,7 @@ export default function LandingPage() {
       </Link>
       </div>
 
-      <p className="betanotice text-center mt-6 text-gray-500">
+      <p className={`${styles.betanotice} text-center mt-6 text-gray-500`}>
         This is just a beta website while I set up a proper navigation.
       </p>
     </div>
