@@ -10,6 +10,7 @@ html, body {
 a {
   color: inherit;
   text-decoration: none;
+  transition: all 0.5s linear;
 }
 
 * {
@@ -25,6 +26,11 @@ img {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  transition: all 0.5s linear;
+}
+
+.buttonbg {
+  transition: all 0.5s linear;
 }
 
 @media (prefers-color-scheme: light) {

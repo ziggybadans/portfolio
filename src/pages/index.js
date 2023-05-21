@@ -58,12 +58,12 @@ export default function Home({ darkMode, setDarkMode }) {
       <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode}/>
         <ScrollToTopButton darkMode={darkMode}/>
         <Link href={user ? "" : "/signinform"}>
-          <button className="fixed top-0 right-0 m-4 text-lg">
+          <button className="fixed top-0 left-0 m-4 text-lg">
             {user ? `Welcome, ${user.email}` : 'Sign In'}
           </button>
         </Link>
         <button 
-          className={`fixed top-7 right-0 m-4 font-bold text-gray-500 
+          className={`fixed top-7 left-0 m-4 font-bold text-gray-500 
           ${user ? "" : "invisible"}`} 
           onClick={handleSignOut}>
             Sign Out
