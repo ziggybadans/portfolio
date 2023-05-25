@@ -9,8 +9,6 @@ import DarkModeButton from "../components/DarkModeButton"
 import LandingPage from "../components/LandingPage";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 
-import imagesJSON from "../data/images.json"
-
 import { UserContext } from "../../hooks/UserContext.Provider";
 import { auth } from '../../firebaseClient.js'
 import { signOut } from "firebase/auth"
@@ -49,7 +47,7 @@ export default function Home({ darkMode, setDarkMode }) {
         </div>
 
         <div id="cinematography" className="cinematography flex flex-col items-center min-h-screen pb-16">
-          <h1 className="text-6xl font-bold mt-44 mb-8">Cinematography</h1>
+          <h1 className="text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-6xl font-bold mt-44 mb-8">Cinematography</h1>
           <button onClick={() => handleClick('#home')} className="font-bold text-gray-600 mb-14">Back</button>
           <GalleryVideo></GalleryVideo>
         </div>
