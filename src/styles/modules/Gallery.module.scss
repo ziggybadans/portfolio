@@ -1,50 +1,54 @@
-  .gallery {
-    display: grid;
-    gap: 15px;
-    width: 93%;
-    margin: auto;
-  }
-  
-  .griditem, #big, #landscape, #portrait {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-  }
+.gallery {
+  display: grid;
+  gap: 15px;
+  width: 93%;
+  margin: auto;
+}
+
+.griditem,
+#big,
+#landscape,
+#portrait {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
 
 @media only screen and (min-width: 600px) {
-    .gallery {
-      grid-template-columns: repeat(2, 1fr);
-      width: 80%;
-      max-width: 2400px;
-    }
-    .griditem, #big, #landscape, #portrait {
-      height: 210px;
-    }
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    width: 80%;
+    max-width: 2400px;
   }
+  .griditem,
+  #big,
+  #landscape,
+  #portrait {
+    height: 210px;
+  }
+}
 
 @media only screen and (min-width: 1000px) {
-    .gallery {
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(50, 210px);
-      width: 80%;
-      max-width: 1300px;
-      max-height: 5400px;
-    }
-    .griditem {
-      height: 210px;
-    }
-    #big {
-      height: 435px;
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-    #portrait {
-      height: 435px;
-      grid-row: span 2;
-    }
-    #landscape {
-      height: 210px;
-      grid-column: span 2;
-    }
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(27, 210px);
+    width: 80%;
+    max-width: 1300px;
   }
-
+  .griditem {
+    height: 210px;
+  }
+  #big {
+    height: 435px;
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  #portrait {
+    height: 435px;
+    grid-row: span 2;
+  }
+  #landscape {
+    height: 210px;
+    grid-column: span 2;
+  }
+}
