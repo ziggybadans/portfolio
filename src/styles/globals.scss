@@ -21,6 +21,10 @@ img {
   transition: 1s;
 }
 
+select {
+  transition: all 0.5s linear;
+}
+
 .background {
   display: flex;
   flex-direction: column;

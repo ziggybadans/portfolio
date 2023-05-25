@@ -53,16 +53,27 @@ function Gallery({ jsonFile }) {
     [screenSize]
   );
 
-  const handleRotationRight = () => {
+  const handleRotation = (direction) => {
     const totalLength = images.length;
-    let newIndex = currentIndex + 1;
-    if (newIndex >= totalLength) {
-      newIndex = 0;
+    let newIndex = currentIndex;
+
+    if (direction === 'right') {
+      newIndex = currentIndex + 1;
+      if (newIndex >= totalLength) {
+        newIndex = 0;
+      }
+    } else if (direction === 'left') {
+      newIndex = currentIndex - 1;
+      if (newIndex < 0) {
+        newIndex = totalLength - 1;
+      }
     }
+
     const newItem = images[newIndex].link;
     setOpenImg(newItem);
     setCurrentIndex(newIndex);
-  };
+};
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -135,7 +146,7 @@ function Gallery({ jsonFile }) {
         {openImg && (
           <Lightbox
             openImg={openImg}
-            handleRotationRight={handleRotationRight}
+            handleRotation={handleRotation}
             setOpenImg={setOpenImg}
           />
         )}
