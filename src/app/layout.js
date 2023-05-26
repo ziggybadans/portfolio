@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning style={{ scrollBehavior: 'smooth'}} className="scroll-smooth">
       <head />
       <body className="p-0 m-0 overflow-x-hidden">
         <Providers>

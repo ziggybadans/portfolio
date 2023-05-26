@@ -2,14 +2,12 @@
 
 import { useState, useEffect } from "react";
 
-import { Navbar } from "./navbar";
+import { Navbar } from "./navbar.tsx";
 import Gallery from "../components/Gallery";
 import GalleryVideo from "../components/GalleryVideo";
 import DarkModeButton from "../components/buttons/DarkModeButton";
 import LandingPage from "./LandingPage";
 import ScrollToTopButton from "../components/buttons/ScrollToTopButton";
-
-import styles from "../styles/modules/navbar.module.scss";
 
 export default function Home() {
   const handleClick = (target) => {
@@ -22,6 +20,10 @@ export default function Home() {
 
   const toggleVisibility = () => {
     const darkButton = document.getElementById("darkButton");
+
+    if (!darkButton) {
+      return;
+    }
 
     if (window.scrollY > 1000) {
       darkButton.style.visibility = "hidden";
@@ -40,7 +42,6 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
       <main>
         <LandingPage />
 

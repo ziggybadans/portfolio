@@ -8,22 +8,34 @@ import { useEffect, useState } from "react";
 import styles from '../styles/modules/navbar.module.scss'
 
 const links = [
-  { href: "/photography", text: "Photography" },
-  { href: "/cinematography", text: "Cinematography" },
+  { href: "#photography", text: "Photography" },
+  { href: "#cinematography", text: "Cinematography" },
   { href: "/resume", text: "Resume" },
 ];
+
+const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  // get the href and remove everything before the hash (#)
+  const href = e.currentTarget.href;
+  const targetId = href.replace(/.*\#/, "");
+  // get the element by id and use scrollIntoView
+  const elem = document.getElementById(targetId);
+  elem?.scrollIntoView({
+    behavior: "smooth",
+  });
+};
 
 const getScrollPosition = () => {
   return window.scrollY || document.documentElement.scrollTop;
 };
 
-export const Navbar = () => {
+export const Navbar = ({ target }) => {
+  console.log(target)
   const path = usePathname();
   const [showNav, setShowNav] = useState(false);
 
   useEffect(() => {
     const targetElementOffset = document
-      .getElementById("photography")
+      .getElementById(target)
       .getBoundingClientRect().top;
     const onScroll = () => {
       setShowNav(getScrollPosition() > targetElementOffset);
@@ -53,6 +65,7 @@ export const Navbar = () => {
                         l.href === path ? "text-yellow-600 font-bold" : ""
                       } text-base`}
                       href={l.href}
+                      onClick={handleScroll}
                     >
                       {l.text}
                     </Link>
@@ -63,7 +76,7 @@ export const Navbar = () => {
           </div>
 
           <div className="features scale-[0.65] mr-10">
-            <DarkModeButton />
+            <DarkModeButton className={undefined} />
           </div>
         </nav>
   );
