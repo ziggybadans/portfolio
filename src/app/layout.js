@@ -1,3 +1,4 @@
+import { ThemeProvider } from "../interfaces/ThemeContext";
 import Providers from "../interfaces/providers";
 import "../styles/globals.css";
 
@@ -12,7 +13,9 @@ export default function RootLayout({ children }) {
       <body className="p-0 m-0 overflow-x-hidden">
         <Providers>
           <div className="flex flex-col items-center min-h-screen">
-            {children}
+            <ThemeProvider>
+              {children}
+            </ThemeProvider>
           </div>
         </Providers>
       </body>

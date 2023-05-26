@@ -1,27 +1,18 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useTheme } from '@wits/next-themes';
+import { ThemeContext } from "../interfaces/ThemeContext"
 
 export default function DarkModeButton() {
-    const { theme, setTheme, resolvedTheme } = useTheme();
-    const [ currentTheme, setCurrentTheme ] = useState('light');
-    console.log(theme);
-
-    useEffect(() => {
-        if (theme === 'dark' || theme === 'light') {
-            setCurrentTheme(theme);
-        } else if (resolvedTheme) {
-            setCurrentTheme(resolvedTheme);
-        }
-    }, [theme, resolvedTheme]);
+    const { currentTheme, setTheme } = useContext(ThemeContext);
     
     const colour = currentTheme == "dark" ? "white" : "black"
     const colourOpposite = currentTheme == "dark" ? "#131418" : "white"
     const iconAlt = currentTheme == "dark" ? 'Enable Light Mode' : 'Enable Dark Mode'
 
     return (
-        <button onClick={() => theme == "dark"? setTheme('light'): setTheme("dark")} className="fixed bottom-0 left-0 m-8">
+        <button onClick={() => currentTheme == "dark"? setTheme('light'): setTheme("dark")} className="fixed bottom-0 left-0 m-8">
             <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 1150 1150" width="85" height="85">
                 <circle fill={colourOpposite} cx="531.25" cy="531.25" r="550"/>
                 <path fill={colour} d="m241.02,514.55c.98-83.5,28.77-156.68,84.38-219.24,26.49-29.8,57.7-53.39,92.76-72.15,10.15-5.43,20.14-7.78,29.78.3,10.33,8.66,13.13,20.17,9.26,32.69-7.03,22.79-12.85,45.76-15.66,69.51-6.93,58.66,1.24,115.15,24.78,169.2,30.48,69.96,79.81,122.99,146.96,159.04,40.75,21.88,84.39,34.37,130.74,37.28,14.77.93,29.4,1.3,44.2.17,18.26-1.39,32.85,11,33.31,26.57.19,6.47-2.19,11.68-6.39,16.33-36.37,40.36-79.77,70.37-130.78,89.32-42.93,15.95-87.32,23.01-132.9,20.07-78.36-5.05-146.99-33.72-204.86-87.31-50.93-47.17-83.67-104.72-98.4-172.49-4.95-22.77-7.63-45.84-7.19-69.29h.01Z"/>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../interfaces/ThemeContext";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -22,7 +23,10 @@ const ScrollButton = ({ target, heading, children }) => {
 }
 
 export default function LandingPage() {
-  const [isHovered, setIsHovered] = useState(false);
+  const [ isHovered, setIsHovered ] = useState(false);
+  const { currentTheme } = useContext(ThemeContext);
+
+  const colour = currentTheme == "dark" ? "white" : "black";
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
@@ -43,13 +47,13 @@ export default function LandingPage() {
             y1="25"
             x2="44"
             y2="25"
-            stroke="white"
-            stroke-width="3"
+            stroke={colour}
+            strokeWidth="3"
           />
           <polyline
             points="35,15 45,25 35,35"
-            stroke="white"
-            stroke-width="3"
+            stroke={colour}
+            strokeWidth="3"
             fill="none"
           />
         </motion.svg>
