@@ -109,7 +109,7 @@ export default function Gallery() {
       <div className="flex justify-center items-center mb-10">
         <div className="relative inline-flex">
           <select
-            className="bg-white dark:bg-black appearance-none rounded-full p-2 pl-3 pr-10"
+            className="bg-stone-50 dark:bg-black appearance-none rounded-full p-2 pl-3 pr-10"
             value={filter}
             onChange={handleFilterChange}
           >
