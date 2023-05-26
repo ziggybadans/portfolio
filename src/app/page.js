@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
 import Gallery from "../components/Gallery";
 import GalleryVideo from "../components/GalleryVideo";
-import DarkModeButton from "../components/DarkModeButton";
-import LandingPage from "../components/LandingPage";
-import ScrollToTopButton from "../components/ScrollToTopButton";
+import DarkModeButton from "../components/buttons/DarkModeButton";
+import LandingPage from "./LandingPage";
+import ScrollToTopButton from "../components/buttons/ScrollToTopButton";
 
 export default function Home(darkMode, setDarkMode) {
   const handleClick = (target) => {
@@ -16,8 +16,8 @@ export default function Home(darkMode, setDarkMode) {
   };
 
   return (
-    <div>
-      <main >
+    <>
+      <main>
         <LandingPage />
 
         <div
@@ -31,7 +31,7 @@ export default function Home(darkMode, setDarkMode) {
           >
             Back
           </button>
-          <Gallery/>
+          <Gallery />
         </div>
 
         <div
@@ -50,8 +50,8 @@ export default function Home(darkMode, setDarkMode) {
           <GalleryVideo></GalleryVideo>
         </div>
       </main>
-      <DarkModeButton/>
+      <DarkModeButton />
       <ScrollToTopButton darkMode={darkMode} />
-    </div>
+    </>
   );
 }

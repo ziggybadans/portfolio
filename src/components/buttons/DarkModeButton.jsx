@@ -1,8 +1,7 @@
 "use client";
 
-import { useContext, useEffect, useState } from 'react';
-import { useTheme } from '@wits/next-themes';
-import { ThemeContext } from "../interfaces/ThemeContext"
+import { useContext } from 'react';
+import { ThemeContext } from "../../interfaces/theme-context"
 
 export default function DarkModeButton() {
     const { currentTheme, setTheme } = useContext(ThemeContext);
