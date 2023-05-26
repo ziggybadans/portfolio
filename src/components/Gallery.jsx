@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import styles from "../styles/modules/Gallery.module.scss";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -30,7 +30,7 @@ export default function Gallery() {
   const scrollingEnabled = useRef(true);
 
   useEffect(() => {
-    fetch('/images.json')
+    fetch("/images.json")
       .then((response) => response.json())
       .then((data) => setImages(data.data))
       .catch((error) => console.error(error));
@@ -131,36 +131,38 @@ export default function Gallery() {
         </div>
       </div>
 
-      <div className={styles.gallery}>
-        {getFilteredImages().map((item, index) => (
-          <motion.div
-            key={index}
-            id={styles[item.size]}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            whileHover={{
-              scale: 1.1,
-              boxShadow: "0px 0px 8px rgba(0,0,0,0.3)",
-            }}
-            whileTap={{ scale: 1.05 }}
-            style={{ cursor: "pointer" }}
-          >
-            <img
-              className={styles.griditem}
+      <div className={styles.gallerycontainer}>
+        <div className={styles.gallery}>
+          {getFilteredImages().map((item, index) => (
+            <motion.div
+              key={index}
               id={styles[item.size]}
-              src={item.link}
-              alt={item.text}
-              onClick={() => handleClick(item, index)}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              whileHover={{
+                scale: 1.1,
+                boxShadow: "0px 0px 8px rgba(0,0,0,0.3)",
+              }}
+              whileTap={{ scale: 1.05 }}
+              style={{ cursor: "pointer" }}
+            >
+              <img
+                className={styles.griditem}
+                id={styles[item.size]}
+                src={item.link}
+                alt={item.text}
+                onClick={() => handleClick(item, index)}
+              />
+            </motion.div>
+          ))}
+          {openImg && (
+            <Lightbox
+              openImg={openImg}
+              handleRotation={handleRotation}
+              setOpenImg={setOpenImg}
             />
-          </motion.div>
-        ))}
-        {openImg && (
-          <Lightbox
-            openImg={openImg}
-            handleRotation={handleRotation}
-            setOpenImg={setOpenImg}
-          />
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

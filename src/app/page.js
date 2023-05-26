@@ -1,12 +1,17 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
+import { Navbar } from "./navbar";
 import Gallery from "../components/Gallery";
 import GalleryVideo from "../components/GalleryVideo";
 import DarkModeButton from "../components/buttons/DarkModeButton";
 import LandingPage from "./LandingPage";
 import ScrollToTopButton from "../components/buttons/ScrollToTopButton";
 
-export default function Home(darkMode, setDarkMode) {
+import styles from "../styles/modules/navbar.module.scss";
+
+export default function Home() {
   const handleClick = (target) => {
     if (target === "#home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -15,14 +20,33 @@ export default function Home(darkMode, setDarkMode) {
     }
   };
 
+  const toggleVisibility = () => {
+    const darkButton = document.getElementById("darkButton");
+
+    if (window.scrollY > 1000) {
+      darkButton.style.visibility = "hidden";
+    } else {
+      darkButton.style.visibility = "visible";
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
   return (
     <>
+      <Navbar />
       <main>
         <LandingPage />
 
         <div
           id="photography"
-          className="photography flex flex-col items-center min-h-screen"
+          className="flex flex-col min-h-screen text-center"
         >
           <h1 className="text-6xl font-bold mt-12 mb-8">Photography</h1>
           <button
@@ -31,7 +55,9 @@ export default function Home(darkMode, setDarkMode) {
           >
             Back
           </button>
-          <Gallery />
+          <div className="photography">
+            <Gallery />
+          </div>
         </div>
 
         <div
@@ -50,8 +76,10 @@ export default function Home(darkMode, setDarkMode) {
           <GalleryVideo></GalleryVideo>
         </div>
       </main>
-      <DarkModeButton />
-      <ScrollToTopButton darkMode={darkMode} />
+      <div id="darkButton">
+        <DarkModeButton className="fixed bottom-0 left-0 m-8" />
+      </div>
+      <ScrollToTopButton />
     </>
   );
 }

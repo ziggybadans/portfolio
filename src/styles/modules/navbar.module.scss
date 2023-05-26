@@ -1,0 +1,11 @@
+.nav {
+    &Hidden {
+        transform: translateY(-100%);
+        transition: transform 0.2s ease-in-out;
+    }
+
+    &Visible {
+        transform: translateY(0);
+        transition: transform 0.3s ease-in-out;
+    }
+}
