@@ -15,9 +15,9 @@ export const PageTransition = ({ children }: { children: React.ReactNode }) => {
     >
       <motion.div
         key={pathname}
-        initial={{ opacity: 1, x: 0, y: 0 }}
+        initial={{ opacity: 0, x: 0, y: 0 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
-        exit={{ opacity: 1, x: 0, y: 0 }}
+        exit={{ opacity: 0, x: 0, y: 0 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
         {children}

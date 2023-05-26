@@ -23,4 +23,5 @@ html.dark {
 
 body {
   background-color: var(--bg-color);
+  transition: all 0.3s;
 }

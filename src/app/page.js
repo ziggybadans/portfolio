@@ -42,6 +42,7 @@ export default function Home() {
 
   return (
     <>
+    <Navbar target="photography"/>
       <main>
         <LandingPage />
 
