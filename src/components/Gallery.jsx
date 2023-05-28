@@ -4,6 +4,7 @@ import styles from "../styles/modules/Gallery.module.scss";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Lightbox from "./Lightbox";
+import Image from "next/image";
 
 export default function Gallery() {
   const [images, setImages] = useState([]);
@@ -30,7 +31,7 @@ export default function Gallery() {
   const scrollingEnabled = useRef(true);
 
   useEffect(() => {
-    fetch("/images.json")
+    fetch("/assets/images.json")
       .then((response) => response.json())
       .then((data) => setImages(data.data))
       .catch((error) => console.error(error));
@@ -146,11 +147,13 @@ export default function Gallery() {
               whileTap={{ scale: 1.05 }}
               style={{ cursor: "pointer" }}
             >
-              <img
+              <Image
                 className={styles.griditem}
                 id={styles[item.size]}
                 src={item.link}
                 alt={item.text}
+                width={item.width}
+                height={item.height}
                 onClick={() => handleClick(item, index)}
               />
             </motion.div>
