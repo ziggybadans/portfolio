@@ -8,20 +8,24 @@ import { useEffect, useState } from "react";
 import styles from '../styles/modules/navbar.module.scss'
 
 const links = [
-  { href: "#photography", text: "Photography" },
-  { href: "#cinematography", text: "Cinematography" },
+  { href: "photography", text: "Photography" },
+  { href: "cinematography", text: "Cinematography" },
   { href: "/resume", text: "Resume" },
+  { href: "/airadio", text: "AiRadio"}
 ];
 
 const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
   // get the href and remove everything before the hash (#)
-  const href = e.currentTarget.href;
-  const targetId = href.replace(/.*\#/, "");
-  // get the element by id and use scrollIntoView
-  const elem = document.getElementById(targetId);
-  elem?.scrollIntoView({
-    behavior: "smooth",
-  });
+  const href = e.currentTarget.getAttribute('href');
+
+  if (!href.includes("/")) {
+    e.preventDefault();
+    // get the element by id and use scrollIntoView
+    const elem = document.getElementById(href);
+    elem?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }
 };
 
 const getScrollPosition = () => {
@@ -45,7 +49,7 @@ export const Navbar = ({ target }) => {
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  }, [target]);
 
   const navClass = showNav ? styles.navVisible : styles.navHidden;
 
@@ -64,6 +68,7 @@ export const Navbar = ({ target }) => {
                       className={`${
                         l.href === path ? "text-yellow-600 font-bold" : ""
                       } text-base`}
+                      scroll={false}
                       href={l.href}
                       onClick={handleScroll}
                     >

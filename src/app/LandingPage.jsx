@@ -10,16 +10,28 @@ import { PageTransition } from "../interfaces/transitions/right-page";
 import styles from "../styles/modules/LandingPage.module.scss";
 
 const ScrollButton = ({ target, heading, children }) => {
-  const handleClick = () => {
-    document.querySelector(target).scrollIntoView({ behavior: "smooth" });
+  const handleScroll = (e) => {
+    // get the href and remove everything before the hash (#)
+    const href = e.currentTarget.getAttribute('href');
+  
+    if (!href.includes("/")) {
+      e.preventDefault();
+      // get the element by id and use scrollIntoView
+      const elem = document.getElementById(href);
+      elem?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
-    <button onClick={handleClick}>
-      <div className="bg-white dark:bg-black p-4 rounded-lg shadow-md hover:bg-gray-200 dark:hover:bg-gray-950">
-        <h2 className="text-xl font-semibold mb-2">{heading}</h2>
-        <p>{children}</p>
-      </div>
+    <button>
+      <Link href={target} onClick={handleScroll} scroll={false}>
+        <div className="bg-white dark:bg-black p-4 rounded-lg shadow-md hover:bg-gray-200 dark:hover:bg-gray-950">
+          <h2 className="text-xl font-semibold mb-2">{heading}</h2>
+          <p>{children}</p>
+        </div>
+      </Link>
     </button>
   );
 };
@@ -72,10 +84,10 @@ export default function LandingPage() {
         </div>
 
         <div className={styles.buttons}>
-          <ScrollButton target="#photography" heading="Photography">
+          <ScrollButton target="photography" heading="Photography">
             View my photography work.
           </ScrollButton>
-          <ScrollButton target="#cinematography" heading="Cinematography">
+          <ScrollButton target="cinematography" heading="Cinematography">
             View my cinematography work.
           </ScrollButton>
         </div>
