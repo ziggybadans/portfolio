@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, AnimatePresence, easeInOut } from "framer-motion";
+import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import DarkModeButton from "../components/buttons/DarkModeButton";
 import { useEffect, useState } from "react";

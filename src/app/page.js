@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 import { Navbar } from "./navbar.tsx";
 import Gallery from "../components/Gallery.jsx";
@@ -8,7 +8,6 @@ import GalleryVideo from "../components/GalleryVideo.jsx";
 import DarkModeButton from "../components/buttons/DarkModeButton.jsx";
 import LandingPage from "./LandingPage.jsx";
 import ScrollToTopButton from "../components/buttons/ScrollToTopButton.jsx";
-import Link from "next/link";
 
 export default function Home() {
   const handleClick = (target) => {
