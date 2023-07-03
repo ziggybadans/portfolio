@@ -8,7 +8,7 @@ def get_image_dimensions(directory, data):
         if not item["link"].startswith('/'):
             item["link"] = '/' + item["link"]
 
-        img_path = os.path.join(directory, item["link"])
+        img_path = os.path.join(directory, item["link"].lstrip('/'))
         if os.path.isfile(img_path) and img_path.endswith(('.png', '.jpg', '.jpeg')):
             try:
                 img = Image.open(img_path)
@@ -20,16 +20,17 @@ def get_image_dimensions(directory, data):
                 print(f'Failed to process {img_path} due to error {str(e)}')
     return data
 
-def write_to_json(data, filename='images.json'):
-    with open(filename, 'w') as f:
-        json.dump({"data": data}, f, indent=4)
 
 filepath = 'C:\\Users\\ziggy\\Documents\\Portfolio Website (new new)\\ziggybadans-portfolio\\public\\assets\\images.json'
+
+def write_to_json(data, filename=filepath):
+    with open(filename, 'w') as f:
+        json.dump({"data": data}, f, indent=4)
 
 # Load your existing data
 with open(filepath, 'r') as f:
     data = json.load(f)["data"]
 
-image_directory = './'
+image_directory = 'C:\\Users\\ziggy\\Documents\\Portfolio Website (new new)\\ziggybadans-portfolio\\public'
 image_data = get_image_dimensions(image_directory, data)
 write_to_json(image_data)

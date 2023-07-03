@@ -11,6 +11,7 @@ export default function Gallery() {
   const [filter, setFilter] = useState("all");
   const filters = [
     "all",
+    "film",
     "nature",
     "wildlife",
     "architecture",

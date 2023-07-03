@@ -43,7 +43,7 @@ export default function Home() {
 
   return (
     <>
-      <Navbar target="photography" />
+      <Navbar target="photography" scroll={true} />
       <main>
         <LandingPage />
 
