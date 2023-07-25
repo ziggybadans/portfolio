@@ -11,6 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
+      <link rel="stylesheet" href="https://use.typekit.net/nub1cfw.css"/>
+      <link rel="preconnect" href="https://fonts.googleapis.com"/>
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+      <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Sacramento&display=swap" rel="stylesheet"/>
       <body className="p-0 m-0 overflow-x-hidden">
         <Providers>
           <ThemeProvider>{children}</ThemeProvider>

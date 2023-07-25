@@ -33,7 +33,6 @@ const getScrollPosition = () => {
 };
 
 export const Navbar = ({ target, scroll }) => {
-  console.log(target);
   const path = usePathname();
   const [showNav, setShowNav] = useState(!scroll);
   console.log("showNav: " + showNav);

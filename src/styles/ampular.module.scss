@@ -1,0 +1,32 @@
+.title_8D {
+    font-family: 'Days One', sans-serif;
+}
+
+.title_8D_2 {
+    font-family: 'Espiritu', serif;
+}
+
+.subtitle_8D {
+    font-family: 'Abril Fatface', serif;
+}
+
+.body_8D {
+    font-family: 'casablanca-urw', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.background {
+    background: radial-gradient(circle at 50% 50%, #0b2a38, #01393d, #001415), url(./noise.png);
+    background-blend-mode: overlay;
+    filter: contrast(150%) brightness(125%);
+}
+
+/*
+.background {
+    background: radial-gradient(circle at 50% 50%, 
+    #0b2a38, #01393d, #001415),
+    url(/public/noise.png);
+    filter: contrast(150%) brightness(300%);
+}
+*/
