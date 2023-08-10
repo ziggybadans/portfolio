@@ -1,0 +1,33 @@
+.background {
+    background: radial-gradient(circle at 70.54% 32.10%, #ead5b5 28.98%, #F0F0F0 100%);
+}
+
+.title1 {
+    background: radial-gradient(67.12% 63.28% at 47.43% 50.00%, #9A4343 0%, #CAA56E 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: dapifer, serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.title2 {
+    background: radial-gradient(circle at 102.78% 8.96%, #E2B765 0%, #68B7BC 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    overflow: visible;
+    line-height: 1.5;
+    margin-top: -20px;
+    font-family: dapifer, serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.grain {
+    background: url("../../public/Grain.png");
+    background-size: 1000px;
+    background-repeat: repeat;
+    background-blend-mode: soft-light;
+}

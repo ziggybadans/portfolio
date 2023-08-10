@@ -1,11 +1,17 @@
-.nav {
-    &Hidden {
-        transform: translateY(-100%);
-        transition: transform 0.2s ease-in-out;
-    }
+.pages {
+    box-shadow: 0px 4px 59px 0px rgba(0, 0, 0, 0.09);
+}
 
-    &Visible {
-        transform: translateY(0);
-        transition: transform 0.3s ease-in-out;
-    }
+.activated {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.buttonBar {
+    box-shadow: 0px 4px 60px 0px rgba(0, 56, 52, 0.25);
+}
+
+.colourButton {
+    background: #D1ECEC;
+    box-shadow: 0px 4px 60px 0px rgba(0, 56, 52, 0.25);
 }
