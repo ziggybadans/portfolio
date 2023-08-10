@@ -1,5 +1,5 @@
 .background {
-    background: radial-gradient(circle at 70.54% 32.10%, #ead5b5 28.98%, #F0F0F0 100%);
+    background: radial-gradient(circle at 65.54% 32.10%, #eddbbf 28.98%, #F0F0F0 70%);
 }
 
 .title1 {
@@ -10,6 +10,7 @@
     font-family: dapifer, serif;
     font-weight: 500;
     font-style: normal;
+    text-shadow: 0 0 100px rgba(169, 62, 62, 0.5);
 }
 
 .title2 {
@@ -23,6 +24,7 @@
     font-family: dapifer, serif;
     font-weight: 500;
     font-style: normal;
+    text-shadow: 0 0 100px rgba(76, 142, 160, 0.5);
 }
 
 .grain {
@@ -30,4 +32,19 @@
     background-size: 1000px;
     background-repeat: repeat;
     background-blend-mode: soft-light;
+}
+
+.subtitle {
+    font-family: dapifer, serif;
+    font-style: normal;
+}
+
+.main {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @media (min-width: 1000px) {
+        padding-left: calc(15px + (345 * ((100vw - 1000px) / 1000)));
+        padding-right: calc(15px + (345 * ((100vw - 1000px) / 1000)));
+    }
 }

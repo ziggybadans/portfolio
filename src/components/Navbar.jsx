@@ -2,8 +2,8 @@ import styles from "../styles/modules/navbar.module.scss"
 
 const Navbar = ({}) => {
     return (
-        <div className=" flex items-center absolute top-[16px]">
-            <ul id="pages" className={`px-[36px] py-[12px] flex justify-center items-center gap-[36px] rounded-xl bg-white ${styles.pages}`}>
+        <div className="flex items-center sticky top-[20px] z-[60]">
+            <ul id="pages" className={`text-xl px-[36px] py-[12px] flex justify-center items-center gap-[36px] rounded-xl bg-white ${styles.pages}`}>
                     <li className={styles.activated}>Home</li>
                     <li>Photos</li>
                     <li>Films</li>
