@@ -1,5 +1,3 @@
-"use client";
-
 import Navbar from "../components/Navbar.jsx";
 
 import styles from "../styles/Home.module.scss"
@@ -49,7 +47,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="flex pt-[100px] justify-center items-start gap-[25px] mix-blend-overlay z-50">
+                    <div className="flex pt-[175px] justify-center items-start gap-[25px] mix-blend-overlay z-50">
                         <span className={`px-[32px] py-[8px] text-2xl border-4 rounded-full border-orange-500 bg-orange-50 shadow-xl`}>You need film help</span>
                         <span className={`px-[32px] py-[8px] text-2xl border-4 rounded-full border-teal-500 bg-teal-50 shadow-xl`}>You need photo help</span>
                     </div>
