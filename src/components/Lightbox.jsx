@@ -33,17 +33,17 @@ const Lightbox = ({ openImg, handleRotation, setOpenImg }) => {
           transition={{ ease: "easeOut", duration: 0.00005 }}
           style={{ cursor: zoom ? "zoom-out" : "zoom-in" }}
         />
-        <svg className={styles.dismiss} onClick={handleClose} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg className={styles.dismiss} onClick={handleClose} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
         <svg className={styles.right} onClick={() => handleRotation('right')} xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
-          <line x1="15" y1="25" x2="44" y2="25" stroke="white" stroke-width="3"/>
-          <polyline points="35,15 45,25 35,35" stroke="white" stroke-width="3" fill="none" />
+          <line x1="15" y1="25" x2="44" y2="25" stroke="white" strokeWidth="3"/>
+          <polyline points="35,15 45,25 35,35" stroke="white" strokeWidth="3" fill="none" />
         </svg>
         <svg className={`${styles.left} transform rotate-180`} onClick={() => handleRotation('left')} xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
-          <line x1="15" y1="25" x2="44" y2="25" stroke="white" stroke-width="3"/>
-          <polyline points="35,15 45,25 35,35" stroke="white" stroke-width="3" fill="none" />
+          <line x1="15" y1="25" x2="44" y2="25" stroke="white" strokeWidth="3"/>
+          <polyline points="35,15 45,25 35,35" stroke="white" strokeWidth="3" fill="none" />
         </svg>
       </motion.div>
 
