@@ -108,8 +108,8 @@ export default function Gallery() {
 
   return (
     <div>
-      <div className="flex justify-center items-center mb-10">
-        <div className="relative inline-flex">
+      <div className="flex flex-col justify-center items-center mb-10">
+        <div className="relative inline-flex mb-8">
           <select
             className="bg-stone-50 dark:bg-black appearance-none rounded-full p-2 pl-3 pr-10"
             value={filter}
@@ -131,6 +131,9 @@ export default function Gallery() {
             </svg>
           </div>
         </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="3" viewBox="0 0 2720 2" fill="none">
+          <path d="M0 1H2720" stroke="#000000" stroke-opacity="1" stroke-width="1"/>
+        </svg>
       </div>
 
       <div className={styles.gallerycontainer}>
