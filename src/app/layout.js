@@ -1,7 +1,6 @@
 import "../styles/globals.css";
+import Providers from "./providers";
 import { Outfit } from 'next/font/google'
-import Navbar from "../components/Navbar";
-import styles from "../styles/Home.module.scss"
 
 export const metadata = {
   title: "Ziggy Badans",
@@ -21,12 +20,9 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="https://use.typekit.net/gug7lfb.css" suppressHydrationWarning/>
       </head>
       <body>
-      <section className={`absolute min-h-screen min-w-full ${styles.background}`}>
-        <div className={`pt-[20px] pb-[100px] flex flex-col items-center`}>
-          <Navbar />
-        </div>
-        {children}
-      </section>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   )

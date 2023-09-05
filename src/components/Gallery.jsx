@@ -1,35 +1,12 @@
 "use client";
 
 import styles from "../styles/modules/Gallery.module.scss";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Lightbox from "./Lightbox";
 import Image from "next/image";
 
 export default function Gallery() {
   const [images, setImages] = useState([]);
-  const [filter, setFilter] = useState("all");
-  const filters = [
-    "all",
-    "film",
-    "nature",
-    "wildlife",
-    "architecture",
-    "sky",
-    "portrait",
-    "landscape",
-    "bands",
-    "abstract",
-    "cars",
-  ];
-
-  const [openImg, setOpenImg] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(null);
-
-  const [screenSize, setScreenSize] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
-  const scrollingEnabled = useRef(true);
 
   useEffect(() => {
     fetch("/assets/images.json")
@@ -38,107 +15,19 @@ export default function Gallery() {
       .catch((error) => console.error(error));
   }, []);
 
-  const handleFilterChange = (e) => {
-    setFilter(e.target.value);
-  };
-
-  const getFilteredImages = () => {
-    if (filter === "all") {
-      return images;
-    } else {
-      return images.filter((image) => image.tags.includes(filter));
-    }
-  };
-
-  const handleClick = useCallback(
-    (item, index) => {
-      setCurrentIndex(index);
-      setOpenImg(item.link);
-      if (screenSize > 1000) {
-        disableScrolling();
-      } else {
-        enableScrolling();
-      }
-    },
-    [screenSize]
-  );
-
-  const handleRotation = (direction) => {
-    const totalLength = images.length;
-    let newIndex = currentIndex;
-
-    if (direction === "right") {
-      newIndex = currentIndex + 1;
-      if (newIndex >= totalLength) {
-        newIndex = 0;
-      }
-    } else if (direction === "left") {
-      newIndex = currentIndex - 1;
-      if (newIndex < 0) {
-        newIndex = totalLength - 1;
-      }
-    }
-
-    const newItem = images[newIndex].link;
-    setOpenImg(newItem);
-    setCurrentIndex(newIndex);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenSize(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  function disableScrolling() {
-    var x = window.scrollX;
-    var y = window.scrollY;
-    window.onscroll = function () {
-      window.scrollTo(x, y);
-    };
-    scrollingEnabled.current = false;
-  }
-
-  function enableScrolling() {
-    window.onscroll = function () {};
-    scrollingEnabled.current = true;
-  }
-
   return (
     <div>
       <div className="flex flex-col justify-center items-center mb-10">
-        <div className="relative inline-flex mb-8">
-          <select
-            className="bg-stone-50 dark:bg-black appearance-none rounded-full p-2 pl-3 pr-10"
-            value={filter}
-            onChange={handleFilterChange}
-          >
-            {filters.map((filter) => (
-              <option key={filter} value={filter}>
-                {filter.charAt(0).toUpperCase() + filter.slice(1)}
-              </option>
-            ))}
-          </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-            <svg
-              className="fill-current h-4 w-4 transform rotate-180"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path d="M7.05 11.293l3.591-3.909a.697.697 0 0 1 1.041 0l3.909 3.909a.802.802 0 0 1 0 1.114.776.776 0 0 1-1.114 0l-3.272-3.576-3.27 3.576a.776.776 0 0 1-1.114 0 .802.802 0 0 1 0-1.114z" />
-            </svg>
-          </div>
+        <div className="relative inline-flex mb-8 gap-4">
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="3" viewBox="0 0 2720 2" fill="none">
+        <svg id="separator" xmlns="http://www.w3.org/2000/svg" width="1080" height="3" viewBox="0 0 2720 2" fill="none">
           <path d="M0 1H2720" stroke="#000000" stroke-opacity="1" stroke-width="1"/>
         </svg>
       </div>
 
       <div className={styles.gallerycontainer}>
         <div className={styles.gallery}>
-          {getFilteredImages().map((item, index) => (
+          {images.map((item, index) => (
             <motion.div
               key={index}
               id={styles[item.size]}
@@ -158,17 +47,9 @@ export default function Gallery() {
                 alt={item.text}
                 width={item.width}
                 height={item.height}
-                onClick={() => handleClick(item, index)}
               />
             </motion.div>
           ))}
-          {openImg && (
-            <Lightbox
-              openImg={openImg}
-              handleRotation={handleRotation}
-              setOpenImg={setOpenImg}
-            />
-          )}
         </div>
       </div>
     </div>

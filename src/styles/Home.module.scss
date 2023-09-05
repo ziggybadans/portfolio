@@ -1,7 +1,3 @@
-.background {
-    background: radial-gradient(circle at 65.54% 32.10%, #eddbbf 28.98%, #F0F0F0 70%);
-}
-
 .title1 {
     background: radial-gradient(67.12% 63.28% at 47.43% 50.00%, #9A4343 0%, #CAA56E 100%);
     background-clip: text;
@@ -10,7 +6,7 @@
     font-family: dapifer, serif;
     font-weight: 500;
     font-style: normal;
-    text-shadow: 0 0 100px rgba(169, 62, 62, 0.5);
+    text-shadow: 0 0 50px rgba(169, 62, 62, 0.5);
 }
 
 .title2 {
@@ -24,14 +20,13 @@
     font-family: dapifer, serif;
     font-weight: 500;
     font-style: normal;
-    text-shadow: 0 0 100px rgba(76, 142, 160, 0.5);
+    text-shadow: 0 0 50px rgba(76, 142, 160, 0.5);
 }
 
 .grain {
     background: url("../../public/Grain.png");
     background-size: 1000px;
     background-repeat: repeat;
-    background-blend-mode: soft-light;
 }
 
 .subtitle {
