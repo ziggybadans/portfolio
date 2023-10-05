@@ -1,8 +1,8 @@
 import styles from "../../styles/Home.module.scss"
-import Gallery from "../../components/Gallery"
+import Tape from "../../components/Tape"
 import Navbar from "../../components/Navbar"
 
-export default function Photos() {
+export default function Films() {
     return (
         <section>
             <main className={`flex flex-col items-center relative ${styles.main}`}>
@@ -10,9 +10,9 @@ export default function Photos() {
                     <Navbar/>
                 </div>
                 <div id="title" className="pb-8">
-                    <span className="text-6xl font-bold">Photography</span>
+                    <span className="text-6xl font-bold">Cinematography</span>
                 </div>
-                <Gallery/>
+                <Tape/>
             </main>
         </section>
 
