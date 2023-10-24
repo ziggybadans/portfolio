@@ -35,10 +35,7 @@ export function Animate({ children }: PropsWithChildren) {
                 transition={transition}
                 style={{
                     height: "100%",
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center"
+                    width: "100%"
                 }}
             >
                 <FrozenRouter>{children}</FrozenRouter>
