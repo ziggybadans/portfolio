@@ -13,7 +13,7 @@ export default function Home() {
     <section
       className={`bg-gradient-radial dark:bg-black dark:bg-dark-gradient-radial absolute top-0 left-0 w-full h-full transition-all`}
     >
-      <div className={`mt-[20px] mb-[100px] flex flex-col items-center`}>
+      <div className={`mt-[20px] mb-[75px] lg:mb-[100px] flex flex-col items-center`}>
         <Navbar />
       </div>
       <main
@@ -21,7 +21,7 @@ export default function Home() {
       >
         <div
           id="hero"
-          className="text-3xl 2xl:text-4xl text-center w-full mt-[5%] lg:mt-[13%] 2xl:mt-[10%]"
+          className="text-3xl 2xl:text-4xl text-center w-full lg:mt-[13%] 2xl:mt-[10%]"
         >
           <div className={`z-50 relative`}>
             <span className={styles.subtitle}>Hi, I&apos;m </span>
@@ -38,7 +38,7 @@ export default function Home() {
               <span className={`z-50 hidden lg:block max-lg:text-6xl ${styles.and1}`}>&</span>
               <span className={`z-50 lg:-mt-[20px] -mt-[34px] max-lg:text-6xl ${styles.title2}`}>Photographer</span>
             </div>
-            <div className="absolute lg:-right-0 lg:-top-20 top-72">
+            <div className="absolute lg:-right-0 lg:-top-20 top-60">
               <Image src={headshot} width="64px" alt="" className="w-[600px]" />
               <div id="hero-mask" className="absolute lg:-top-[95%] lg:-right-[45%] max-lg:hidden transition-all">
                 {resolvedTheme === "light" ? (
