@@ -21,7 +21,7 @@ export default function Home() {
       >
         <div
           id="hero"
-          className="text-3xl 2xl:text-4xl text-center w-full mt-[13%] 2xl:mt-[10%]"
+          className="text-3xl 2xl:text-4xl text-center w-full mt-[5%] lg:mt-[13%] 2xl:mt-[10%]"
         >
           <div className={`z-50 relative`}>
             <span className={styles.subtitle}>Hi, I&apos;m </span>
@@ -29,10 +29,16 @@ export default function Home() {
               Ziggy Badans
             </span>
           </div>
-          <div className="flex flex-col pt-[50px] ml-[15%] text-8xl 2xl:text-9xl text-left justify-center relative">
-            <span className={`z-50 h-full ${styles.title1}`}>Filmmaker</span>
-            <span className={`z-50 ${styles.title2}`}>& Photographer</span>
-            <div className="absolute -right-0 -top-14">
+          <div className="flex flex-col lg:pt-[50px] lg:ml-[15%] text-8xl 2xl:text-9xl text-left lg:items-start items-center justify-center relative">
+            <div className="flex flex-row gap-6">
+              <span className={`z-50 h-full ${styles.title1}`}>Filmmaker</span>
+              <span className={`z-50 lg:hidden block ${styles.and2}`}>&</span>
+            </div>
+            <div className="flex flex-row gap-6">
+              <span className={`z-50 hidden lg:block ${styles.and1}`}>&</span>
+              <span className={`z-50 lg:-mt-[20px] -mt-[50px] ${styles.title2}`}>Photographer</span>
+            </div>
+            <div className="absolute lg:-right-0 lg:-top-20 top-72">
               <Image src={headshot} width="64px" alt="" className="w-[600px]" />
               <div id="hero-mask" className="absolute -top-[95%] -right-[45%] transition-all">
                 {resolvedTheme === "light" ? (
@@ -198,7 +204,7 @@ export default function Home() {
                 )}
               </div>
             </div>
-            <span className="text-xl opacity-50">
+            <span className="text-xl opacity-50 mt-3 lg:mt-0">
               based in Sydney, Australia
             </span>
           </div>
