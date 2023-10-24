@@ -1,3 +1,4 @@
+import { Animate } from "../interfaces/Animate";
 import "../styles/globals.css";
 import Providers from "./providers";
 import { Outfit } from 'next/font/google'
@@ -21,7 +22,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <Providers>
-          {children}
+          <Animate>{children}</Animate>
         </Providers>
       </body>
     </html>

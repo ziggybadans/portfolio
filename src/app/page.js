@@ -11,7 +11,7 @@ export default function Home() {
   const { resolvedTheme, setTheme } = useTheme();
   return (
     <section
-      className={`bg-gradient-radial dark:bg-black dark:bg-dark-gradient-radial absolute top-0 left-0 w-full h-full`}
+      className={`bg-gradient-radial dark:bg-black dark:bg-dark-gradient-radial absolute top-0 left-0 w-full h-full transition-all`}
     >
       <div className={`mt-[20px] mb-[100px] flex flex-col items-center`}>
         <Navbar />
@@ -21,7 +21,7 @@ export default function Home() {
       >
         <div
           id="hero"
-          className="text-3xl 2xl:text-4xl text-center w-full mt-[10vh] 2xl:mt-[8vh]"
+          className="text-3xl 2xl:text-4xl text-center w-full mt-[13%] 2xl:mt-[10%]"
         >
           <div className={`z-50 relative`}>
             <span className={styles.subtitle}>Hi, I&apos;m </span>
@@ -34,7 +34,7 @@ export default function Home() {
             <span className={`z-50 ${styles.title2}`}>& Photographer</span>
             <div className="absolute -right-0 -top-14">
               <Image src={headshot} width="64px" alt="" className="w-[600px]" />
-              <div id="hero-mask" className="absolute -top-[95%] -right-[45%]">
+              <div id="hero-mask" className="absolute -top-[95%] -right-[45%] transition-all">
                 {resolvedTheme === "light" ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -203,7 +203,7 @@ export default function Home() {
             </span>
           </div>
 
-          <div className="flex mt-[150px] justify-center items-start gap-[25px] mix-blend-overlay dark:mix-blend-normal z-[60]">
+          <div className="invisible flex mt-[150px] justify-center items-start gap-[25px] mix-blend-overlay dark:mix-blend-normal z-[60]">
             <button
               className={`px-[32px] py-[8px] text-2xl border-4 rounded-full 
             border-orange-500 bg-orange-50 dark:bg-amber-950 dark:bg-opacity-50 shadow-xl dark:shadow-amber-950 dark:shadow-lg cursor-pointer`}

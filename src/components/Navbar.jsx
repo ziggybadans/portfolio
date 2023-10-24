@@ -4,6 +4,7 @@ import styles from "../styles/modules/navbar.module.scss"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import ThemeButton from "./buttons/ThemeSwitcher"
+import { motion } from "framer-motion"
 
 const links = [
     { href: "/", text: "Home"},
@@ -21,10 +22,11 @@ const Navbar = ({}) => {
                 <ul id="pages" className={`text-xl px-[36px] py-[12px] flex justify-center items-center gap-[36px] rounded-xl bg-white dark:bg-black ${styles.pages}`}>
                     {links.map((l) => (
                         <li key={l.href}>
-                            <Link href={l.href}>
-                                <p className={pathname === l.href ? 'font-bold underline' : ''}>
-                                    {l.text}
-                                </p>
+                            <Link className="relative" href={l.href}>
+                                {l.href === pathname && (
+                                    <motion.span layoutId="underline" className="absolute left-0 top-full block h-[1px] w-full bg-black dark:bg-white"/>
+                                )}
+                                {l.text}
                             </Link>
                         </li>
                     ))}
@@ -33,7 +35,9 @@ const Navbar = ({}) => {
             <div className="flex items-center">
                 <div className="sm:w-[60px] border-b border-black dark:border-white sm:mx-5 "></div>
                 <div id="buttons" className="flex items-center gap-[8px]">
-                    <span className={`flex px-[24px] py-[5px] justify-center items-center gap-[10px] rounded-3xl bg-orange-300 dark:text-black ${styles.buttonBar}`}>Contact</span>
+                    <button className={`flex px-[24px] py-[5px] justify-center items-center gap-[10px] rounded-3xl bg-orange-300 dark:text-black ${styles.buttonBar} ${pathname === "/contact" ? 'font-bold underline' : ''}`}>
+                        <Link href="/contact">Contact</Link>
+                    </button>
                     <ThemeButton/>
                 </div>
             </div>
