@@ -29,18 +29,18 @@ export default function Home() {
               Ziggy Badans
             </span>
           </div>
-          <div className="flex flex-col lg:pt-[50px] lg:ml-[15%] text-8xl 2xl:text-9xl text-left lg:items-start items-center justify-center relative">
-            <div className="flex flex-row gap-6">
-              <span className={`z-50 h-full ${styles.title1}`}>Filmmaker</span>
-              <span className={`z-50 lg:hidden block ${styles.and2}`}>&</span>
+          <div className="flex flex-col lg:pt-[50px] pt-[10px] lg:ml-[15%] text-8xl 2xl:text-9xl text-left lg:items-start items-center justify-center relative">
+            <div className="flex flex-row lg:gap-6 gap-3">
+              <span className={`z-50 h-full max-lg:text-7xl ${styles.title1}`}>Filmmaker</span>
+              <span className={`z-50 lg:hidden block max-lg:text-7xl ${styles.and2}`}>&</span>
             </div>
             <div className="flex flex-row gap-6">
-              <span className={`z-50 hidden lg:block ${styles.and1}`}>&</span>
-              <span className={`z-50 lg:-mt-[20px] -mt-[50px] ${styles.title2}`}>Photographer</span>
+              <span className={`z-50 hidden lg:block max-lg:text-7xl ${styles.and1}`}>&</span>
+              <span className={`z-50 lg:-mt-[20px] -mt-[34px] max-lg:text-7xl ${styles.title2}`}>Photographer</span>
             </div>
             <div className="absolute lg:-right-0 lg:-top-20 top-72">
               <Image src={headshot} width="64px" alt="" className="w-[600px]" />
-              <div id="hero-mask" className="absolute -top-[95%] -right-[45%] transition-all">
+              <div id="hero-mask" className="absolute lg:-top-[95%] lg:-right-[45%] max-lg:hidden transition-all">
                 {resolvedTheme === "light" ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
