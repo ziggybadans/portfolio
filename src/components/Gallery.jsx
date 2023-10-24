@@ -41,10 +41,10 @@ export default function Gallery() {
   return (
     <div>
       <div className="flex flex-col justify-center items-center">
-        <div className="flex sm:flex-row flex-col justify-center gap-3 mb-10">
+        <div className="flex flex-row justify-center gap-3 mb-10">
         <div className="relative inline-flex">
           <select
-            className="bg-stone-50 dark:bg-black appearance-none rounded-full p-2 pl-3 pr-10"
+            className="bg-stone-50 dark:bg-black border appearance-none rounded-full p-2 pl-3 pr-10"
             value={typeFilter}
             onChange={e => setTypeFilter(e.target.value)}
           >
@@ -66,7 +66,7 @@ export default function Gallery() {
         </div>
         <div className="relative inline-flex">
           <select
-            className="bg-stone-50 dark:bg-black appearance-none w-[140px] rounded-full p-2 pl-3 pr-10"
+            className="bg-stone-50 dark:bg-black border appearance-none w-[140px] rounded-full p-2 pl-3 pr-10"
             value={mediumFilter}
             onChange={e => setMediumFilter(e.target.value)}
           >
