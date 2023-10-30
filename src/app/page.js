@@ -143,7 +143,7 @@ export default function Home() {
                     width="600"
                     height="600"
                     preserveAspectRatio="none"
-                    className="absolute h-full w-full scale-[175%]"
+                    className="absolute h-full w-full scale-[175%] max-lg:scale-[165%]"
                   >
                     <g filter="url(#filter0_f_17_586)">
                       <mask
