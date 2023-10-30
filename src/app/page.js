@@ -10,45 +10,61 @@ import Navbar from "../components/Navbar";
 export default function Home() {
   const { resolvedTheme, setTheme } = useTheme();
   return (
-    <section
-      className={`bg-gradient-radial dark:bg-black dark:bg-dark-gradient-radial absolute top-0 left-0 w-full h-full transition-all`}
-    >
-      <div className={`mt-[20px] mb-[75px] lg:mb-[100px] flex flex-col items-center`}>
-        <Navbar />
-      </div>
-      <main
-        className={`flex flex-col items-center justify-center gap-[10px] w-full ${styles.main}`}
-      >
-        <div
-          id="hero"
-          className="text-3xl 2xl:text-4xl text-center w-full lg:mt-[13%] 2xl:mt-[10%]"
-        >
-          <div className={`z-50 relative`}>
-            <span className={styles.subtitle}>Hi, I&apos;m </span>
-            <span className={`font-semibold ${styles.subtitle}`}>
-              Ziggy Badans
-            </span>
-          </div>
-          <div className="flex flex-col lg:pt-[50px] lg:ml-[15%] text-8xl 2xl:text-9xl text-left lg:items-start items-center justify-center relative">
-            <div className="flex flex-row lg:gap-6 gap-3">
-              <span className={`z-50 h-full max-lg:text-6xl ${styles.title1}`}>Filmmaker</span>
-              <span className={`z-50 lg:hidden block max-lg:text-6xl ${styles.and2}`}>&</span>
+    <div id="parent" className={`bg-gradient-radial dark:bg-black dark:bg-dark-gradient-radial
+    absolute top-0 left-0 w-full h-screen`}>
+        <div className={`flex flex-col items-center absolute w-full mt-[20px]`}>
+            <Navbar/>
+        </div>
+        <div id="main" className={`flex flex-col h-full max-lg:pt-[20vh] max-lg:items-center lg:justify-center ${styles.main}`}>
+            <div id="hero" className="text-3xl text-center">
+                <div className={`z-10 relative drop-shadow-2xl`}>
+                    <span className={styles.subtitle}>Hi, I&apos;m </span>
+                    <span className={`font-semibold ${styles.subtitle}`}>Ziggy Badans</span>
+                </div>
+                <div className="flex flex-col pt-[20px] max-lg:pt-[10px] lg:ml-[15%] text-8xl 2xl:text-9xl text-left
+                lg:items-start items-center justify-center relative">
+                    <div className="flex flex-row lg:gap-6 gap-3">
+                        <span className={`z-50 h-full max-lg:text-6xl ${styles.title1}`}>Filmmaker</span>
+                        <span className={`z-50 lg:hidden block max-lg:text-6xl ${styles.and2}`}>&</span>
+                    </div>
+                    <div className="flex flex-row gap-6">
+                        <span className={`z-50 hidden lg:block max-lg:text-6xl ${styles.and1}`}>&</span>
+                        <span className={`z-50 -mt-[20px] max-lg:-mt-[30px] max-lg:text-6xl 
+                        ${styles.title2}`}>Photographer</span>
+                    </div>
+                    <span className="text-xl opacity-50 z-10 mt-3 lg:mt-0">
+                    based in Sydney, Australia
+                    </span>
+                </div>
+
+                <div className="hidden mt-[150px] justify-center items-start gap-[25px] mix-blend-overlay
+                dark:mix-blend-normal z-[60]">
+                    <button
+                    className={`px-[32px] py-[8px] text-2xl border-4 rounded-full 
+                    border-orange-500 bg-orange-50 dark:bg-amber-950 dark:bg-opacity-50 shadow-xl 
+                    dark:shadow-amber-950 dark:shadow-lg cursor-pointer`}>
+                        <Link href="/films">You need film help</Link>
+                    </button>
+                    <span className={`px-[32px] py-[8px] text-2xl border-4 rounded-full 
+                    border-teal-500 bg-teal-50 dark:bg-teal-950 dark:bg-opacity-50
+                    shadow-xl dark:shadow-teal-950 dark:shadow-lg`}>
+                    You need photo help
+                    </span>
+                </div>
             </div>
-            <div className="flex flex-row gap-6">
-              <span className={`z-50 hidden lg:block max-lg:text-6xl ${styles.and1}`}>&</span>
-              <span className={`z-50 lg:-mt-[20px] -mt-[34px] max-lg:text-6xl ${styles.title2}`}>Photographer</span>
-            </div>
-            <div className="absolute lg:-right-0 lg:-top-20 top-60">
-              <Image src={headshot} width="64px" alt="" className="w-[600px]" />
-              <div id="hero-mask" className="absolute lg:-top-[95%] lg:-right-[45%] max-lg:hidden transition-all">
+
+            <div className={`min-h-screen min-w-full absolute top-0 left-0 z-50 ${styles.grain} opacity-50 
+            dark:opacity-100 dark:mix-blend-soft-light`}/>
+            <div className="fixed lg:ml-[500px] lg:mb-[50px] max-lg:mt-[30vh] w-full max-w-[500px] h-full max-h-[321px]">
+                <Image src={headshot} layout="fill" objectFit="contain" alt=""/>
                 {resolvedTheme === "light" ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="1000"
-                    height="1000"
-                    viewBox="0 0 1920 1080"
-                    fill="none"
-                    className=""
+                    viewBox="0 0 1650 1300"
+                    width="600"
+                    height="600"
+                    preserveAspectRatio="none"
+                    className="absolute h-full w-full scale-[175%]"
                   >
                     <g filter="url(#filter0_f_9_594)">
                       <mask
@@ -120,13 +136,14 @@ export default function Home() {
                       </radialGradient>
                     </defs>
                   </svg>
-                ) : (
+                    ) : (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="1000"
-                    height="1000"
-                    viewBox="0 0 1920 1080"
-                    fill="none"
+                    viewBox="0 0 1650 1300"
+                    width="600"
+                    height="600"
+                    preserveAspectRatio="none"
+                    className="absolute h-full w-full scale-[175%]"
                   >
                     <g filter="url(#filter0_f_17_586)">
                       <mask
@@ -202,31 +219,8 @@ export default function Home() {
                     </defs>
                   </svg>
                 )}
-              </div>
             </div>
-            <span className="text-xl opacity-50 mt-3 lg:mt-0">
-              based in Sydney, Australia
-            </span>
-          </div>
-
-          <div className="invisible flex mt-[150px] justify-center items-start gap-[25px] mix-blend-overlay dark:mix-blend-normal z-[60]">
-            <button
-              className={`px-[32px] py-[8px] text-2xl border-4 rounded-full 
-            border-orange-500 bg-orange-50 dark:bg-amber-950 dark:bg-opacity-50 shadow-xl dark:shadow-amber-950 dark:shadow-lg cursor-pointer`}
-            >
-              <Link href="/films">You need film help</Link>
-            </button>
-
-            <span
-              className={`px-[32px] py-[8px] text-2xl border-4 rounded-full 
-            border-teal-500 bg-teal-50 dark:bg-teal-950 dark:bg-opacity-50 shadow-xl dark:shadow-teal-950 dark:shadow-lg`}
-            >
-              You need photo help
-            </span>
-          </div>
         </div>
-        <div className={`min-h-screen min-w-full absolute top-0 left-0 z-50 ${styles.grain} opacity-50 dark:opacity-100 dark:mix-blend-soft-light`}/>
-      </main>
-    </section>
+    </div>
   );
 }
