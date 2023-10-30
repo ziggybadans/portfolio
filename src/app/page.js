@@ -6,18 +6,19 @@ import headshot from "../../public/Headshot.png";
 import Image from "next/image";
 import Link from "next/link.js";
 import Navbar from "../components/Navbar";
+import { motion } from "framer-motion"
 
 export default function Home() {
   const { resolvedTheme, setTheme } = useTheme();
   return (
-    <div id="parent" className={`bg-gradient-radial dark:bg-black dark:bg-dark-gradient-radial
+    <div id="parent" className={`bg-gradient-radial dark:bg-black dark:bg-dark-gradient-radial transition-colors
     absolute top-0 left-0 w-full h-screen`}>
         <div className={`flex flex-col items-center absolute w-full mt-[20px]`}>
             <Navbar/>
         </div>
         <div id="main" className={`flex flex-col h-full max-lg:pt-[20vh] max-lg:items-center lg:justify-center ${styles.main}`}>
             <div id="hero" className="text-3xl text-center">
-                <div className={`z-10 relative drop-shadow-2xl`}>
+                <div className={`z-20 relative drop-shadow-2xl`}>
                     <span className={styles.subtitle}>Hi, I&apos;m </span>
                     <span className={`font-semibold ${styles.subtitle}`}>Ziggy Badans</span>
                 </div>
@@ -32,30 +33,29 @@ export default function Home() {
                         <span className={`z-50 -mt-[20px] max-lg:-mt-[30px] max-lg:text-6xl 
                         ${styles.title2}`}>Photographer</span>
                     </div>
-                    <span className="text-xl opacity-50 z-10 mt-3 lg:mt-0">
+                    <span className="text-xl opacity-50 z-20 mt-3 lg:mt-0">
                     based in Sydney, Australia
                     </span>
                 </div>
 
-                <div className="hidden mt-[150px] justify-center items-start gap-[25px] mix-blend-overlay
-                dark:mix-blend-normal z-[60]">
-                    <button
-                    className={`px-[32px] py-[8px] text-2xl border-4 rounded-full 
-                    border-orange-500 bg-orange-50 dark:bg-amber-950 dark:bg-opacity-50 shadow-xl 
-                    dark:shadow-amber-950 dark:shadow-lg cursor-pointer`}>
-                        <Link href="/films">You need film help</Link>
-                    </button>
-                    <span className={`px-[32px] py-[8px] text-2xl border-4 rounded-full 
-                    border-teal-500 bg-teal-50 dark:bg-teal-950 dark:bg-opacity-50
-                    shadow-xl dark:shadow-teal-950 dark:shadow-lg`}>
-                    You need photo help
-                    </span>
+                <div className="absolute left-0 mt-[60px] w-full items-center mix-blend-overlay
+                dark:mix-blend-screen">
+                    <Link href="/photography">
+                        <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`px-[32px] py-[8px] text-xl border-4 rounded-full 
+                        border-teal-500 bg-teal-50 dark:bg-teal-950 dark:bg-opacity-50
+                        shadow-xl dark:shadow-teal-950 dark:shadow-lg`}>
+                        Band photography here
+                        </motion.button>
+                    </Link>
                 </div>
             </div>
 
-            <div className={`min-h-screen min-w-full absolute top-0 left-0 z-50 ${styles.grain} opacity-50 
-            dark:opacity-100 dark:mix-blend-soft-light`}/>
-            <div className="fixed lg:ml-[500px] lg:mb-[50px] max-lg:mt-[30vh] w-full max-w-[500px] h-full max-h-[321px]">
+            <div className={`min-h-screen min-w-full absolute top-0 left-0 z-50 ${styles.grain} opacity-50 transition-all
+            dark:opacity-100 dark:mix-blend-soft-light pointer-events-none`}/>
+            <div className="fixed lg:ml-[500px] lg:mb-[50px] max-lg:mt-[30vh] w-full max-w-[500px] h-full max-h-[321px] z-10 pointer-events-none">
                 <Image src={headshot} layout="fill" objectFit="contain" alt=""/>
                 {resolvedTheme === "light" ? (
                   <svg
