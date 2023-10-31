@@ -38,7 +38,7 @@ export default function Home() {
                     </span>
                 </div>
 
-                <div className="absolute left-0 mt-[60px] w-full items-center mix-blend-overlay
+                <div className="absolute left-0 max-lg:bottom-10 mt-[60px] max-lg:z-50 max-lg:scale-90 w-full items-center mix-blend-overlay
                 dark:mix-blend-screen">
                     <Link href="/photography">
                         <motion.button
