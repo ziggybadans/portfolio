@@ -13,7 +13,7 @@ export default function Photos() {
 
     useEffect(() => {
         controls.start("rest");
-    }, []);
+    }, [controls]);
 
     // define variants
     const buttonVariants = {
