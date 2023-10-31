@@ -40,7 +40,7 @@ export default function Home() {
 
                 <div className="absolute left-0 max-lg:bottom-10 mt-[60px] max-lg:z-50 max-lg:scale-90 w-full items-center mix-blend-overlay
                 dark:mix-blend-screen">
-                    <Link href="/photography">
+                    <Link href="/photography/band">
                         <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}

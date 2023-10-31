@@ -16,13 +16,15 @@ export default function Gallery() {
   }, []);
 
   const [typeFilter, setTypeFilter] = useState('all');
-  const typeFilters = [ "all", "nature", "wildlife", "architecture", "sky", "portrait", "landscape", "bands", "abstract", "cars" ]
+  const typeFilters = [ "all", "nature", "wildlife", "architecture", "sky", "portrait", "landscape", "abstract", "cars" ]
   const [mediumFilter, setMediumFilter] = useState('all');
   const mediumFilters = [ "all", "digital", "film" ]
 
   let filteredImages = images;
   if (typeFilter !== 'all') {
-    filteredImages = filteredImages.filter(image => image.tags.includes(typeFilter));
+    filteredImages = filteredImages.filter(image => image.tags.includes(typeFilter) && !image.tags.includes("bands"));
+  } else {
+    filteredImages = filteredImages.filter(image => !image.tags.includes("bands"));
   }
   if (mediumFilter !== 'all') {
     filteredImages = filteredImages.filter(image => {
