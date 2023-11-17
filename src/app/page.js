@@ -55,7 +55,7 @@ export default function Home() {
 
             <div className={`min-h-screen min-w-full absolute top-0 left-0 z-50 ${styles.grain} opacity-50 transition-all
             dark:opacity-100 dark:mix-blend-soft-light pointer-events-none`}/>
-            <div className="fixed lg:ml-[500px] lg:mb-[50px] max-lg:mt-[30vh] w-full max-w-[500px] h-full max-h-[321px] z-10 pointer-events-none">
+            <div className="fixed lg:ml-[500px] 2xl:ml-[725px] lg:mb-[50px] max-lg:mt-[30vh] w-full max-w-[500px] h-full max-h-[321px] z-10 pointer-events-none">
                 <Image src={headshot} layout="fill" objectFit="contain" alt=""/>
                 {resolvedTheme === "light" ? (
                   <svg

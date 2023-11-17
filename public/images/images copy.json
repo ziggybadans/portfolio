@@ -541,6 +541,16 @@
             "height": 1080
         },
         {
+            "text": "Image55",
+            "link": "/images/image55.jpg",
+            "size": "portrait",
+            "tags": [
+                "wildlife"
+            ],
+            "width": 1080,
+            "height": 1620
+        },
+        {
             "text": "Image51",
             "link": "/images/image51.jpg",
             "size": "normal",
@@ -553,7 +563,7 @@
         {
             "text": "Image52",
             "link": "/images/image52.jpg",
-            "size": "normal",
+            "size": "landscape",
             "tags": [
                 "bands"
             ],
@@ -569,16 +579,6 @@
             ],
             "width": 1274,
             "height": 849
-        },
-        {
-            "text": "Image55",
-            "link": "/images/image55.jpg",
-            "size": "portrait",
-            "tags": [
-                "wildlife"
-            ],
-            "width": 1080,
-            "height": 1620
         },
         {
             "text": "Image59",
@@ -601,6 +601,16 @@
             ],
             "width": 1808,
             "height": 791
+        },        
+        {
+            "text": "Image84",
+            "link": "/images/image84.jpg",
+            "size": "normal",
+            "tags": [
+                "nature"
+            ],
+            "width": 1920,
+            "height": 1080
         },
         {
             "text": "Image60",
@@ -613,6 +623,16 @@
             "height": 1080
         },
         {
+            "text": "Image62",
+            "link": "/images/image62.jpg",
+            "size": "normal",
+            "tags": [
+                "bands"
+            ],
+            "width": 1440,
+            "height": 1080
+        },
+        {
             "text": "Image58",
             "link": "/images/image58.jpg",
             "size": "landscape",
@@ -622,16 +642,6 @@
             ],
             "width": 1920,
             "height": 535
-        },
-        {
-            "text": "Image62",
-            "link": "/images/image62.jpg",
-            "size": "normal",
-            "tags": [
-                "bands"
-            ],
-            "width": 1440,
-            "height": 1080
         },
         {
             "text": "Image63",
@@ -704,13 +714,161 @@
             "height": 1080
         },
         {
-            "text": "Image70",
-            "link": "/images/image70.jpg",
+            "text": "image72.jpg",
+            "link": "/images/image72.jpg",
             "size": "normal",
             "tags": [
-                "bands"
+                "film",
+                "architecture"
             ],
             "width": 1184,
+            "height": 1080
+        },
+        {
+            "text": "Image70",
+            "link": "/images/image70.jpg",
+            "size": "big",
+            "tags": [
+                "architecture",
+                "film"
+            ],
+            "width": 1184,
+            "height": 1080
+        },
+        {
+            "text": "image71.jpg",
+            "link": "/images/image71.jpg",
+            "size": "normal",
+            "tags": [
+                "film",
+                "architecture",
+                "abstract"
+            ],
+            "width": 1184,
+            "height": 1080
+        },
+        {
+            "text": "image73.jpg",
+            "link": "/images/image73.jpg",
+            "size": "normal",
+            "tags": [
+                "film",
+                "architecture",
+                "water"
+            ],
+            "width": 1184,
+            "height": 1080
+        },
+        {
+            "text": "image76.jpg",
+            "link": "/images/image76.jpg",
+            "size": "portrait",
+            "tags": [
+                "film",
+                "portrait"
+            ],
+            "width": 716,
+            "height": 1080
+        },
+        {
+            "text": "image74.jpg",
+            "link": "/images/image74.jpg",
+            "size": "big",
+            "tags": [
+                "film",
+                "portrait"
+            ],
+            "width": 1184,
+            "height": 1080
+        },
+        {
+            "text": "image77.jpg",
+            "link": "/images/image77.jpg",
+            "size": "normal",
+            "tags": [
+                "film",
+                "landscape"
+            ],
+            "width": 1629,
+            "height": 1080
+        },
+        {
+            "text": "image75.jpg",
+            "link": "/images/image75.jpg",
+            "size": "big",
+            "tags": [
+                "film",
+                "portrait"
+            ],
+            "width": 1629,
+            "height": 1080
+        },
+        {
+            "text": "image78.jpg",
+            "link": "/images/image78.jpg",
+            "size": "normal",
+            "tags": [
+                "film",
+                "portrait"
+            ],
+            "width": 1629,
+            "height": 1080
+        },
+        {
+            "text": "image79.jpg",
+            "link": "/images/image79.jpg",
+            "size": "portrait",
+            "tags": [
+                "film",
+                "portrait",
+                "nature"
+            ],
+            "width": 716,
+            "height": 1080
+        },
+        {
+            "text": "image80.jpg",
+            "link": "/images/image80.jpg",
+            "size": "portrait",
+            "tags": [
+                "film",
+                "portrait",
+                "nature"
+            ],
+            "width": 716,
+            "height": 1080
+        },
+        {
+            "text": "image81.jpg",
+            "link": "/images/image81.jpg",
+            "size": "normal",
+            "tags": [
+                "film",
+                "nature"
+            ],
+            "width": 1629,
+            "height": 1080
+        },
+        {
+            "text": "image82.jpg",
+            "link": "/images/image82.jpg",
+            "size": "portrait",
+            "tags": [
+                "film",
+                "nature"
+            ],
+            "width": 716,
+            "height": 1080
+        },
+        {
+            "text": "image83.jpg",
+            "link": "/images/image83.jpg",
+            "size": "portrait",
+            "tags": [
+                "film",
+                "nature"
+            ],
+            "width": 716,
             "height": 1080
         }
     ]
