@@ -128,7 +128,7 @@ export default function Contact() {
                 <span>Want to discuss potential work or something else? Send a message here!</span>
             </div>
 
-            <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
+            <form className="flex flex-col gap-2" onSubmit={handleSubmit} method="POST">
                 <div className="flex flex-row gap-2 relative">
                     <input type="text" name="name" placeholder="First name (required)" required className="p-2 rounded-lg dark:bg-black" />
                     <input type="text" name="name" placeholder="Last name" className="p-2 rounded-lg dark:bg-black" />
