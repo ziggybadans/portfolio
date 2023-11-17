@@ -11,13 +11,6 @@ export default function Contact() {
     const [subject, setSubject] = useState("");
     const [otherSelected, setOtherSelected] = useState(false);
 
-    const [selectedFiles, setSelectedFiles] = useState([]);
-    const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-
-    const [overallProgress, setOverallProgress] = useState(0);
-    const [fileProgress, setFileProgress] = useState({});
-    const fileProgressRef = useRef({});
-
     useEffect(() => {
         if (subject === "other") {
             setOtherSelected(true);
@@ -35,76 +28,28 @@ export default function Contact() {
         setSubject(e.target.value);
     };
 
-    const handleFileUpload = (event) => {
-        let newFiles = Array.from(event.target.files);
-
-        newFiles = newFiles.filter(
-            (newFile) => !selectedFiles.map((file) => file.name).includes(newFile.name)
-        );
-
-
-        setSelectedFiles((oldFiles) => [...oldFiles, ...newFiles]);
-    };
-
-    const toggleFilePreview = () => {
-        setIsPreviewOpen(!isPreviewOpen);
-    };
-
-    const uploadFiles = () => {
-        selectedFiles.forEach((file) => {
-            setFileProgress((prevProgress) => ({ ...prevProgress, [file.name]: 0 }));
-
-            const formData = new FormData();
-            formData.append("file", file);
-
-            const xhr = new XMLHttpRequest();
-
-            xhr.upload.onprogress = (event) => {
-                if (event.lengthComputable) {
-                    const progress = Math.round((event.loaded / event.total) * 100);
-                    fileProgressRef.current[file.name] = progress;
-
-                    const sumProgress = selectedFiles.reduce(
-                        (total, current) => total + (fileProgressRef.current[current.name] || 0),
-                        0
-                    );
-                    setOverallProgress(sumProgress / selectedFiles.length);
-                }
-            };
-
-            xhr.onload = () => {
-                if (xhr.status === 200) {
-                    file.uploaded = true;
-                    fileProgressRef.current[file.name] = 100;
-                    setSelectedFiles([...selectedFiles]);
-                }
-            };
-
-            xhr.onerror = () => {
-                console.error('Error uploading ${file.name}');
-            };
-
-            xhr.open("POST", "/api/contact");
-            xhr.send(formData);
-        });
-    };
-
-    const removeFile = (fileToRemove) => {
-        setSelectedFiles(selectedFiles.filter(file => file.name !== fileToRemove.name));
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const formData = new FormData(e.target);
-        formData.append('fileUpload', selectedFiles);
+        const data = {
+            firstName: e.target.elements.name[0].value,
+            lastName: e.target.elements.name[1].value,
+            email: e.target.elements.email.value,
+            region: e.target.elements.region.value,
+            phone: e.target.elements.phone.value,
+            subject: e.target.elements.subject.value,
+            message: e.target.elements.message.value
+        };
 
         try {
             const response = await fetch('/api/contact', {
                 method: 'POST',
-                body: formData
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
             });
-            
+
             if (response.ok) {
                 alert('Form sent!');
             } else {
@@ -171,48 +116,6 @@ export default function Contact() {
 
                     <div className="text-red-300 absolute -left-5 top-[10px]">*</div>
                 </div>
-
-                <div className="flex flex-row gap-2 justify-center items-center dark:bg-black p-2 rounded-lg">
-                    <input 
-                      type="file"
-                      id="fileUpload"
-                      name="fileUpload"
-                      accept=".jpg,.png,.jpeg,.gif"
-                      multiple
-                      onChange={handleFileUpload}
-                      className="hidden"
-                    />
-                    <label htmlFor="fileUpload" onClick={uploadFiles} className="uploadLabel p-2 rounded-lg dark:bg-teal-950 cursor-pointer">
-                        Upload files...
-                    </label>
-                    <div className="flex-grow">
-                        <div className="h-2 w-full rounded-full bg-gray-500 overflow-hidden">
-                            <div className="h-2 rounded-full bg-teal-500" style={{ width: `${overallProgress}%` }}></div>
-                        </div>
-                    </div>
-                    {selectedFiles.length > 0 && 
-                      <div className="card" onClick={toggleFilePreview}>
-                        <span className="dark:bg-teal-950 p-2 rounded-lg cursor-pointer">Attachments</span>
-                      </div>
-                    }
-                </div>
-                {isPreviewOpen &&
-                  <div className="flex flex-row gap-2 -mt-1 dark:bg-black p-4 rounded-lg">
-                    {selectedFiles.map((file =>
-                        <div key={file.name} className="text-left relative">
-                          {file.type.includes('image') && <img src={URL.createObjectURL(file)} width="100" className="rounded-lg" />}
-                          {file.type.includes('video') && <video src={URL.createObjectURL(file)} width="100" className="rounded-lg" />}
-                          <button onClick={() => removeFile(file)} className="absolute -top-[10px] -right-[15px] p-[5px] rounded-3xl bg-orange-100 dark:bg-gray-900">
-                            <IconContext.Provider value={{ className: "shared-class", size: 20 }}>
-                                <LuX/>
-                            </IconContext.Provider>
-                          </button>
-                          <p className={`text-gray-500 w-[100px] whitespace-nowrap overflow-hidden text-ellipsis`}>{file.name}</p>
-                          <progress value={fileProgress[file.name] || 0} max="100" className="w-[100px] hidden"/>
-                        </div>
-                    ))}
-                  </div>
-                }
 
                 <motion.button type="submit" className="p-2 dark:bg-teal-950 mt-2 dark:bg-opacity-10 bg-opacity-75 rounded-full dark:border-teal-950 border-orange-200 border-[3px]
                  bg-orange-100 dark:shadow-teal-950 shadow-orange-100 shadow-lg text-lg cursor-pointer"
