@@ -84,13 +84,36 @@ export default function Contact() {
                 console.error('Error uploading ${file.name}');
             };
 
-            xhr.open("POST", "/upload");
+            xhr.open("POST", "/api/contact");
             xhr.send(formData);
         });
     };
 
     const removeFile = (fileToRemove) => {
         setSelectedFiles(selectedFiles.filter(file => file.name !== fileToRemove.name));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        formData.append('fileUpload', selectedFiles);
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                body: formData
+            });
+            
+            if (response.ok) {
+                alert('Form sent!');
+            } else {
+                throw new Error(response.statusText);
+            }
+        } catch (err) {
+            alert('An error occurred. Please try again.');
+            console.error(err);
+        }
     };
 
     return (
@@ -105,7 +128,7 @@ export default function Contact() {
                 <span>Want to discuss potential work or something else? Send a message here!</span>
             </div>
 
-            <div className="flex flex-col gap-2">
+            <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
                 <div className="flex flex-row gap-2 relative">
                     <input type="text" name="name" placeholder="First name (required)" required className="p-2 rounded-lg dark:bg-black" />
                     <input type="text" name="name" placeholder="Last name" className="p-2 rounded-lg dark:bg-black" />
@@ -154,7 +177,7 @@ export default function Contact() {
                       type="file"
                       id="fileUpload"
                       name="fileUpload"
-                      accept=".jpg,.png,.jpeg,.gif,.mp4,.mov"
+                      accept=".jpg,.png,.jpeg,.gif"
                       multiple
                       onChange={handleFileUpload}
                       className="hidden"
@@ -191,10 +214,12 @@ export default function Contact() {
                   </div>
                 }
 
-                <motion.input type="Submit" value="Send Message" className="p-2 dark:bg-teal-950 mt-2 dark:bg-opacity-10 bg-opacity-75 rounded-full dark:border-teal-950 border-orange-200 border-[3px]
+                <motion.button type="submit" className="p-2 dark:bg-teal-950 mt-2 dark:bg-opacity-10 bg-opacity-75 rounded-full dark:border-teal-950 border-orange-200 border-[3px]
                  bg-orange-100 dark:shadow-teal-950 shadow-orange-100 shadow-lg text-lg cursor-pointer"
-                whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}/>
-            </div>
+                whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    Send message
+                </motion.button>
+            </form>
         </main>
     )
 }
