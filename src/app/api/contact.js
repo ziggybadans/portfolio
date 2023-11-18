@@ -1,12 +1,12 @@
 import sgMail from "@sendgrid/mail"
 
-sgMail.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export default async function handler(req, res) {
     const { firstName, lastName, email, subject, message, region, phone } = req.body;
     const content = {
         to: 'ziggybadans@gmail.com',
-        from: email,
+        from: 'ziggybadans@gmail.com',
         subject: `New message from ${firstName} ${lastName ? lastName : ''}`,
         text: message,
         html: `

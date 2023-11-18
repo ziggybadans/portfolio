@@ -42,7 +42,7 @@ export default function Contact() {
         };
 
         try {
-            const response = await fetch('/api/contact', {
+            const response = await fetch('/api/contact.js', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
