@@ -41,8 +41,8 @@ const Navbar = ({}) => {
                         <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className={`flex px-[24px] py-[5px] justify-center items-center gap-[10px]
-                        rounded-3xl bg-orange-300 dark:text-black ${styles.buttonBar} 
+                        className={`px-[24px] py-[5px] justify-center items-center gap-[10px]
+                        hidden rounded-3xl bg-orange-300 dark:text-black ${styles.buttonBar} 
                         ${pathname === "/contact" ? 'font-semibold underline' : ''}`}>
                             Contact
                         </motion.button>
